@@ -59,4 +59,29 @@ class Departemen_model extends CI_Model
         $this->db->delete($this->table);
     }
 
+	function generatekode()
+    {
+
+        $this->db->select('RIGHT(kode_departemen,4) as kode_departemen', false);
+        $this->db->order_by("kode_departemen", "DESC");
+        $this->db->limit(1);
+        $query = $this->db->get('departemen');
+
+        // CEK JIKA DATA ADA
+        if ($query->num_rows() <> 0) {
+            $data       = $query->row(); // ambil satu baris data
+            $kodeReq  = intval($data->kode_departemen) + 1; // tambah 1
+        } else {
+            $kodeReq  = 1; // isi dengan 1
+        }
+
+        $lastKode = str_pad($kodeReq, 4, "0", STR_PAD_LEFT);
+        $REQ      = "D";
+
+        $newKode  = $REQ . "". $lastKode;
+
+        return $newKode;  // return kode baru
+
+    }
+
 }

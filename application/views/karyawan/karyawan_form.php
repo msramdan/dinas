@@ -21,8 +21,8 @@
 						<thead>
 							<table id="data-table-default" class="table  table-bordered table-hover table-td-valign-middle">
 								<tr>
-									<td>Nik <?php echo form_error('nik') ?></td>
-									<td><input type="text" class="form-control" name="nik" id="nik" placeholder="Nik" value="<?php echo $nik; ?>" /></td>
+									<td>NIK <?php echo form_error('nik') ?></td>
+									<td><input type="text" class="form-control" name="nik" id="nik" placeholder="NIK" value="<?php echo $nik; ?>" /></td>
 								</tr>
 								<tr>
 									<td>Nama Karyawan <?php echo form_error('nama_karyawan') ?></td>
@@ -30,11 +30,34 @@
 								</tr>
 								<tr>
 									<td>Jabatan <?php echo form_error('jabatan_id') ?></td>
-									<td><input type="text" class="form-control" name="jabatan_id" id="jabatan_id" placeholder="Jabatan Id" value="<?php echo $jabatan_id; ?>" /></td>
+									<td>
+										<select name="jabatan_id" class="form-control theSelect">
+											<option value="">-- Pilih -- </option>
+											<?php foreach ($jabatan as $key => $data) { ?>
+												<?php if ($jabatan_id == $data->jabatan_id) { ?>
+													<option value="<?php echo $data->jabatan_id ?>" selected><?php echo $data->nama_jabatan ?></option>
+												<?php } else { ?>
+													<option value="<?php echo $data->jabatan_id ?>"><?php echo $data->nama_jabatan ?></option>
+												<?php } ?>
+											<?php } ?>
+										</select>
+									</td>
 								</tr>
 								<tr>
 									<td>Departemen <?php echo form_error('departemen_id') ?></td>
-									<td><input type="text" class="form-control" name="departemen_id" id="departemen_id" placeholder="Departemen Id" value="<?php echo $departemen_id; ?>" /></td>
+									<td>
+										<select name="departemen_id" class="form-control theSelect">
+											<option value="">-- Pilih -- </option>
+											<?php foreach ($departemen as $key => $data) { ?>
+												<?php if ($departemen_id == $data->departemen_id) { ?>
+													<option value="<?php echo $data->departemen_id ?>" selected><?php echo $data->nama_departemen ?></option>
+												<?php } else { ?>
+													<option value="<?php echo $data->departemen_id ?>"><?php echo $data->nama_departemen ?></option>
+												<?php } ?>
+											<?php } ?>
+										</select>
+									</td>
+
 								</tr>
 
 								<tr>
@@ -43,7 +66,13 @@
 								</tr>
 								<tr>
 									<td>Jenis Kelamin <?php echo form_error('jenis_kelamin') ?></td>
-									<td><input type="text" class="form-control" name="jenis_kelamin" id="jenis_kelamin" placeholder="Jenis Kelamin" value="<?php echo $jenis_kelamin; ?>" /></td>
+									<td>
+										<select name="jenis_kelamin" class="form-control theSelect" value="<?= $jenis_kelamin ?>">
+											<option value="">-- Pilih --</option>
+											<option value="Perempuan" <?php echo $jenis_kelamin == 'Perempuan' ? 'selected' : 'null' ?>>Perempuan</option>
+											<option value="Laki-laki" <?php echo $jenis_kelamin == 'Laki-laki' ? 'selected' : 'null' ?>>Laki-laki</option>
+										</select>
+									</td>
 								</tr>
 								<tr>
 									<td>Tanggal Lahir <?php echo form_error('tanggal_lahir') ?></td>
@@ -59,7 +88,13 @@
 								</tr>
 								<tr>
 									<td>Status Karyawan <?php echo form_error('status_karyawan') ?></td>
-									<td><input type="text" class="form-control" name="status_karyawan" id="status_karyawan" placeholder="Status Karyawan" value="<?php echo $status_karyawan; ?>" /></td>
+									<td>
+										<select name="status_karyawan" class="form-control theSelect" value="<?= $status_karyawan ?>">
+											<option value="">-- Pilih --</option>
+											<option value="Aktif" <?php echo $status_karyawan == 'Aktif' ? 'selected' : 'null' ?>>Aktif</option>
+											<option value="Tidak Aktif" <?php echo $status_karyawan == 'Tidak Aktif' ? 'selected' : 'null' ?>>Tidak Aktif</option>
+										</select>
+									</td>
 								</tr>
 								<tr>
 									<td></td>

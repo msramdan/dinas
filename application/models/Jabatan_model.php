@@ -59,4 +59,30 @@ class Jabatan_model extends CI_Model
         $this->db->delete($this->table);
     }
 
+	function generatekode()
+    {
+
+        $this->db->select('RIGHT(kode_jabatan,4) as kode_jabatan', false);
+        $this->db->order_by("kode_jabatan", "DESC");
+        $this->db->limit(1);
+        $query = $this->db->get('jabatan');
+
+        // CEK JIKA DATA ADA
+        if ($query->num_rows() <> 0) {
+            $data       = $query->row(); // ambil satu baris data
+            $kodeReq  = intval($data->kode_jabatan) + 1; // tambah 1
+        } else {
+            $kodeReq  = 1; // isi dengan 1
+        }
+
+        $lastKode = str_pad($kodeReq, 4, "0", STR_PAD_LEFT);
+        $tahun    = date("Y");
+        $REQ      = "J";
+
+        $newKode  = $REQ . "". $lastKode;
+
+        return $newKode;  // return kode baru
+
+    }
+
 }

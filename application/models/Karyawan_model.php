@@ -18,6 +18,8 @@ class Karyawan_model extends CI_Model
     // get all
     function get_all()
     {
+		$this->db->join('jabatan', 'jabatan.jabatan_id = karyawan.jabatan_id', 'left');
+        $this->db->join('departemen', 'departemen.departemen_id = karyawan.departemen_id', 'left');
         $this->db->order_by($this->id, $this->order);
         return $this->db->get($this->table)->result();
     }

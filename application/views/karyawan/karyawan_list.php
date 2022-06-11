@@ -52,8 +52,8 @@
 														<td><?= $no++ ?></td>
 														<td><?php echo $karyawan->nik ?></td>
 														<td><?php echo $karyawan->nama_karyawan ?></td>
-														<td><?php echo $karyawan->jabatan_id ?></td>
-														<td><?php echo $karyawan->departemen_id ?></td>
+														<td><?php echo $karyawan->nama_jabatan ?></td>
+														<td><?php echo $karyawan->nama_departemen ?></td>
 														<td><?php echo $karyawan->alamat ?></td>
 														<td><?php echo $karyawan->jenis_kelamin ?></td>
 														<td><?php echo $karyawan->tanggal_lahir ?></td>
@@ -62,8 +62,6 @@
 														<td><?php echo $karyawan->status_karyawan ?></td>
 														<td style="text-align:center" width="200px">
 															<?php
-															echo anchor(site_url('karyawan/read/' . encrypt_url($karyawan->karyawan_id)), '<i class="fa fa-eye" aria-hidden="true"></i>', 'class="btn btn-success btn-sm read_data"');
-															echo '  ';
 															echo anchor(site_url('karyawan/update/' . encrypt_url($karyawan->karyawan_id)), '<i class="fa fa-pencil" aria-hidden="true"></i>', 'class="btn btn-primary btn-sm update_data"');
 															echo '  ';
 															echo anchor(site_url('karyawan/delete/' . encrypt_url($karyawan->karyawan_id)), '<i class="fa fa-trash" aria-hidden="true"></i>', 'class="btn btn-danger btn-sm delete_data" Delete', 'onclick="javasciprt: return confirm(\'Are You Sure ?\')"');
