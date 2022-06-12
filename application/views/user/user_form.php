@@ -26,12 +26,9 @@
 								</tr>
 								<tr>
 									<td>Password <?php echo form_error('password') ?></td>
-									<td><input type="text" class="form-control" name="password" id="password" placeholder="Password" value="<?php echo $password; ?>" /></td>
+									<td><input type="password" class="form-control" name="password" id="password" placeholder="Password" value="<?php echo $password; ?>" /></td>
 								</tr>
-								<tr>
-									<td>Level Id <?php echo form_error('level_id') ?></td>
-									<td><input type="text" class="form-control" name="level_id" id="level_id" placeholder="Level Id" value="<?php echo $level_id; ?>" /></td>
-								</tr>
+								<input type="hidden" class="form-control" name="level_id" id="level_id" placeholder="Level Id" value="1" />
 								<tr>
 									<td></td>
 									<td><input type="hidden" name="user_id" value="<?php echo $user_id; ?>" />

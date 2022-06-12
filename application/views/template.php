@@ -41,7 +41,7 @@
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 					<h4 class="modal-title">Update Password</h4>
 				</div>
-				<form action="<?=base_url() ?>user/ganti_password/<?= $this->fungsi->user_login()->user_id  ?>" method="post" class="form">
+				<form action="<?= base_url() ?>user/ganti_password/<?= $this->fungsi->user_login()->user_id  ?>" method="post" class="form">
 					<div class="modal-body">
 						<div class="form-group">
 							<label for="exampleInputEmail1">Password</label>
@@ -96,17 +96,8 @@
 						</ul>
 					</li>
 				</ul>
-
-
-
-
-				<!-- end header navigation right -->
 			</div>
-			<!-- end container-fluid -->
 		</div>
-		<!-- end #header -->
-
-		<!-- begin #sidebar -->
 		<div id="sidebar" class="sidebar">
 			<!-- begin sidebar scrollbar -->
 			<div data-scrollbar="true" data-height="100%">
@@ -126,34 +117,42 @@
 				<!-- begin sidebar nav -->
 				<ul class="nav">
 					<li class="nav-header">Main Menu</li>
-					<li><a href="<?= base_url() ?>dashboard"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
-					<li><a href="<?= base_url() ?>karyawan"><i class="fa fa-users"></i> <span>Karyawan</span></a></li>
-					<li><a href="<?= base_url() ?>jabatan"><i class="fa fa-list"></i> <span>Jabatan</span></a></li>
-					<li><a href="<?= base_url() ?>departemen"><i class="fa fa-list"></i> <span>Departemen</span></a></li>
-					<li class="has-sub">
-						<a href="javascript:;">
-							<b class="caret pull-right"></b>
-							<i class="fa fa-cogs"></i>
-							<span>Setting</span>
-						</a>
-						<ul class="sub-menu">
-							<li><a href="<?= base_url() ?>user">Data User</a></li>
-							<li><a href="<?= base_url() ?>history_login">History Login</a></li>
-							<li><a href="<?= base_url() ?>backup">Backup Database</a></li>
-						</ul>
-					</li>
+					<?php if ($this->fungsi->user_login()->level_id == 1) { ?>
+						<li><a href="<?= base_url() ?>dashboard"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
+						<li><a href="<?= base_url() ?>karyawan"><i class="fa fa-users"></i> <span>Karyawan</span></a></li>
+						<li><a href="<?= base_url() ?>jabatan"><i class="fa fa-list"></i> <span>Jabatan</span></a></li>
+						<li><a href="<?= base_url() ?>departemen"><i class="fa fa-list"></i> <span>Departemen</span></a></li>
+						<li><a href="<?= base_url() ?>kategori"><i class="fa fa-list"></i> <span>Kategori</span></a></li>
+						<li><a href="<?= base_url() ?>karyawan"><i class="fa fa-wpforms"></i> <span>Penilaian</span></a></li>
+						<li><a href="<?= base_url() ?>karyawan"><i class="fa fa-book"></i> <span>Laporan</span></a></li>
+						<li class="has-sub">
+							<a href="javascript:;">
+								<b class="caret pull-right"></b>
+								<i class="fa fa-cogs"></i>
+								<span>Setting</span>
+							</a>
+							<ul class="sub-menu">
+								<li><a href="<?= base_url() ?>user">Data User</a></li>
+								<li><a href="<?= base_url() ?>history_login">History Login</a></li>
+								<li><a href="<?= base_url() ?>backup">Backup Database</a></li>
+							</ul>
+						</li>
 
-					<!-- begin sidebar minify button -->
+					<?php } else if ($this->fungsi->user_login()->level_id == 2) { ?>
+						<li><a href="<?= base_url() ?>dashboard"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
+						<li><a href="<?= base_url() ?>karyawan"><i class="fa fa-users"></i> <span>Karyawan</span></a></li>
+						<li><a href="<?= base_url() ?>karyawan"><i class="fa fa-wpforms"></i> <span>Penilaian</span></a></li>
+						<li><a href="<?= base_url() ?>karyawan"><i class="fa fa-book"></i> <span>Laporan</span></a></li>
+					<?php } else { ?>
+
+					<?php } ?>
+
+
 					<li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
-					<!-- end sidebar minify button -->
 				</ul>
-				<!-- end sidebar nav -->
 			</div>
-			<!-- end sidebar scrollbar -->
 		</div>
 		<div class="sidebar-bg"></div>
-		<!-- end #sidebar -->
-
 		<div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>"></div>
 		<?php if ($this->session->flashdata('message')) : ?>
 		<?php endif; ?>
@@ -161,8 +160,6 @@
 		<div class="flash-data2" data-flashdata2="<?= $this->session->flashdata('error'); ?>"></div>
 		<?php if ($this->session->flashdata('error')) : ?>
 		<?php endif; ?>
-
-		<!-- begin #content -->
 		<?php echo $contents ?>
 		<!-- end #content -->
 

@@ -1,7 +1,7 @@
 <div id="content" class="content">
 	<ol class="breadcrumb pull-right">
 		<li><a href="javascript:;">Dashboard</a></li>
-		<li class="active">Jabatan</li>
+		<li class="active">Kategori</li>
 	</ol>
 	<div class="row">
 		<div class="col-md-12">
@@ -13,7 +13,7 @@
 						<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
 						<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
 					</div>
-					<h4 class="panel-title">Data Jabatan</h4>
+					<h4 class="panel-title">Data Kategori</h4>
 				</div>
 				<div class="panel-body">
 					<div class="row">
@@ -22,9 +22,9 @@
 								<div class="box-body">
 									<div class='row'>
 										<div class='col-md-9'>
-											<!-- <div style="padding-bottom: 10px;">
-												<?php echo anchor(site_url('jabatan/create'), '<i class="fa fa-plus-square" aria-hidden="true"></i> Tambah Data', 'class="btn btn-danger btn-sm tambah_data"'); ?>
-											</div> -->
+											<div style="padding-bottom: 10px;">
+												<?php echo anchor(site_url('kategori/create'), '<i class="fa fa-plus-square" aria-hidden="true"></i> Tambah Data', 'class="btn btn-danger btn-sm tambah_data"'); ?>
+											</div>
 										</div>
 									</div>
 									<div class="box-body" style="overflow-x: scroll; ">
@@ -32,25 +32,27 @@
 											<thead>
 												<tr>
 													<th>No</th>
-													<th>Kode Jabatan</th>
-													<th>Nama Jabatan</th>
-													<!-- <th>Action</th> -->
+													<th>Kode Kategori</th>
+													<th>Nama Kategori</th>
+													<th>Bobot</th>
+													<th>Action</th>
 												</tr>
 											</thead>
 											<tbody><?php $no = 1;
-													foreach ($jabatan_data as $jabatan) {
+													foreach ($kategori_data as $kategori) {
 													?>
 													<tr>
 														<td><?= $no++ ?></td>
-														<td><?php echo $jabatan->kode_jabatan ?></td>
-														<td><?php echo $jabatan->nama_jabatan ?></td>
-														<!-- <td style="text-align:center" width="200px">
+														<td><?php echo $kategori->kode_kategori ?></td>
+														<td><?php echo $kategori->nama_kategori ?></td>
+														<td><?php echo $kategori->bobot ?></td>
+														<td>
 															<?php
-															echo anchor(site_url('jabatan/update/' . encrypt_url($jabatan->jabatan_id)), '<i class="fa fa-pencil" aria-hidden="true"></i>', 'class="btn btn-primary btn-sm update_data"');
+															echo anchor(site_url('kategori/update/' . encrypt_url($kategori->kategori_id)), '<i class="fa fa-pencil" aria-hidden="true"></i>', 'class="btn btn-primary btn-sm update_data"');
 															echo '  ';
-															echo anchor(site_url('jabatan/delete/' . encrypt_url($jabatan->jabatan_id)), '<i class="fa fa-trash" aria-hidden="true"></i>', 'class="btn btn-danger btn-sm delete_data" Delete', 'onclick="javasciprt: return confirm(\'Are You Sure ?\')"');
+															echo anchor(site_url('kategori/delete/' . encrypt_url($kategori->kategori_id)), '<i class="fa fa-trash" aria-hidden="true"></i>', 'class="btn btn-danger btn-sm delete_data" Delete', 'onclick="javasciprt: return confirm(\'Are You Sure ?\')"');
 															?>
-														</td> -->
+														</td>
 													</tr>
 												<?php } ?>
 											</tbody>

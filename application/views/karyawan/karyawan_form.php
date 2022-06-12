@@ -22,7 +22,11 @@
 							<table id="data-table-default" class="table  table-bordered table-hover table-td-valign-middle">
 								<tr>
 									<td>NIK <?php echo form_error('nik') ?></td>
-									<td><input type="text" class="form-control" name="nik" id="nik" placeholder="NIK" value="<?php echo $nik; ?>" /></td>
+									<td>
+										<input type="text" class="form-control" name="nik" id="nik" placeholder="NIK" value="<?php echo $nik; ?>" />
+										<input type="hidden" class="form-control" name="nik_lama" id="nik_lama" placeholder="Nip" value="<?php echo $nik_lama; ?>" />
+									
+									</td>
 								</tr>
 								<tr>
 									<td>Nama Karyawan <?php echo form_error('nama_karyawan') ?></td>
@@ -96,6 +100,19 @@
 										</select>
 									</td>
 								</tr>
+								<?php if ($this->uri->segment(2) == "create" || $this->uri->segment(2) == "create_action") { ?>
+									<tr>
+										<td width='200'>Password <?php echo form_error('password') ?></td>
+										<td><input type="password" class="form-control" name="password" id="password" placeholder="Password" value="<?php echo $password; ?>" /></td>
+									</tr>
+								<?php } else { ?>
+									<tr>
+										<td width='200'>Password <?php echo form_error('password') ?></td>
+										<td><input type="password" class="form-control" name="password" id="password" placeholder="Password" value="" />
+											<small style="color: red">(Biarkan kosong jika tidak diganti)</small>
+										</td>
+									</tr>
+								<?php } ?>
 								<tr>
 									<td></td>
 									<td><input type="hidden" name="karyawan_id" value="<?php echo $karyawan_id; ?>" />

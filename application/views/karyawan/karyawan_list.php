@@ -22,9 +22,12 @@
 								<div class="box-body">
 									<div class='row'>
 										<div class='col-md-9'>
-											<div style="padding-bottom: 10px;">
-												<?php echo anchor(site_url('karyawan/create'), '<i class="fa fa-plus-square" aria-hidden="true"></i> Tambah Data', 'class="btn btn-danger btn-sm tambah_data"'); ?>
-											</div>
+											<?php if ($this->fungsi->user_login()->level_id == 1) { ?>
+												<div style="padding-bottom: 10px;">
+													<?php echo anchor(site_url('karyawan/create'), '<i class="fa fa-plus-square" aria-hidden="true"></i> Tambah Data', 'class="btn btn-danger btn-sm tambah_data"'); ?>
+												</div>
+											<?php } ?>
+
 										</div>
 									</div>
 									<div class="box-body" style="overflow-x: scroll; ">
@@ -62,9 +65,13 @@
 														<td><?php echo $karyawan->status_karyawan ?></td>
 														<td style="text-align:center" width="200px">
 															<?php
-															echo anchor(site_url('karyawan/update/' . encrypt_url($karyawan->karyawan_id)), '<i class="fa fa-pencil" aria-hidden="true"></i>', 'class="btn btn-primary btn-sm update_data"');
-															echo '  ';
-															echo anchor(site_url('karyawan/delete/' . encrypt_url($karyawan->karyawan_id)), '<i class="fa fa-trash" aria-hidden="true"></i>', 'class="btn btn-danger btn-sm delete_data" Delete', 'onclick="javasciprt: return confirm(\'Are You Sure ?\')"');
+															// echo anchor(site_url('karyawan/read/' . encrypt_url($karyawan->karyawan_id)), '<i class="fa fa-eye" aria-hidden="true"></i>', 'class="btn btn-success btn-sm update_data"');
+															// echo '  ';
+															if ($this->fungsi->user_login()->level_id == 1) {
+																echo anchor(site_url('karyawan/update/' . encrypt_url($karyawan->karyawan_id)), '<i class="fa fa-pencil" aria-hidden="true"></i>', 'class="btn btn-primary btn-sm update_data"');
+																echo '  ';
+																echo anchor(site_url('karyawan/delete/' . encrypt_url($karyawan->karyawan_id)), '<i class="fa fa-trash" aria-hidden="true"></i>', 'class="btn btn-danger btn-sm delete_data" Delete', 'onclick="javasciprt: return confirm(\'Are You Sure ?\')"');
+															}
 															?>
 														</td>
 													</tr>

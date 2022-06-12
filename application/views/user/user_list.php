@@ -43,11 +43,15 @@
 													<tr>
 														<td><?= $no++ ?></td>
 														<td><?php echo $user->username ?></td>
-														<td><?php echo $user->level_id ?></td>
+														<?php if ($user->level_id == 1) { ?>
+															<td>Admin</td>
+														<?php } else if ($user->level_id == 2) { ?>
+															<td>Supervisor</td>
+														<?php } else { ?>
+															<td>Pegawai</td>
+														<?php } ?>
 														<td>
 															<?php
-															echo anchor(site_url('user/read/' . encrypt_url($user->user_id)), '<i class="fa fa-eye" aria-hidden="true"></i>', 'class="btn btn-success btn-sm read_data"');
-															echo '  ';
 															echo anchor(site_url('user/update/' . encrypt_url($user->user_id)), '<i class="fa fa-pencil" aria-hidden="true"></i>', 'class="btn btn-primary btn-sm update_data"');
 															echo '  ';
 															echo anchor(site_url('user/delete/' . encrypt_url($user->user_id)), '<i class="fa fa-trash" aria-hidden="true"></i>', 'class="btn btn-danger btn-sm delete_data" Delete', 'onclick="javasciprt: return confirm(\'Are You Sure ?\')"');

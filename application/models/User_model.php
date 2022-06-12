@@ -18,8 +18,9 @@ class User_model extends CI_Model
     // get all
     function get_all()
     {
-        $this->db->order_by($this->id, $this->order);
-        return $this->db->get($this->table)->result();
+        $this->db->where('level_id', 1);
+		$this->db->order_by($this->id, $this->order);
+		return $this->db->get($this->table)->result();
     }
 
     // get data by id

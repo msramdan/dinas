@@ -1,73 +1,89 @@
 <div id="content" class="content">
-	<!-- begin row -->
 	<div class="row">
-		<!-- begin col-3 -->
 		<div class="col-md-3 col-sm-6">
 			<div class="widget widget-stats bg-green">
-				<div class="stats-icon"><i class="fa fa-desktop"></i></div>
-				<div class="stats-info">
-					<h4>TOTAL VISITORS</h4>
-					<p>3,291,922</p>
-				</div>
-				<div class="stats-link">
-					<a href="javascript:;">View Detail <i class="fa fa-arrow-circle-o-right"></i></a>
-				</div>
-			</div>
-		</div>
-		<!-- end col-3 -->
-		<!-- begin col-3 -->
-		<div class="col-md-3 col-sm-6">
-			<div class="widget widget-stats bg-blue">
-				<div class="stats-icon"><i class="fa fa-chain-broken"></i></div>
-				<div class="stats-info">
-					<h4>BOUNCE RATE</h4>
-					<p>20.44%</p>
-				</div>
-				<div class="stats-link">
-					<a href="javascript:;">View Detail <i class="fa fa-arrow-circle-o-right"></i></a>
-				</div>
-			</div>
-		</div>
-		<!-- end col-3 -->
-		<!-- begin col-3 -->
-		<div class="col-md-3 col-sm-6">
-			<div class="widget widget-stats bg-purple">
 				<div class="stats-icon"><i class="fa fa-users"></i></div>
 				<div class="stats-info">
-					<h4>UNIQUE VISITORS</h4>
-					<p>1,291,922</p>
+					<h4>DATA KARYAWAN</h4>
+					<?php
+					$karyawan = $this->db->get('karyawan')->num_rows();
+					?>
+					<p><?= $karyawan ?> Data</p>
 				</div>
 				<div class="stats-link">
-					<a href="javascript:;">View Detail <i class="fa fa-arrow-circle-o-right"></i></a>
+					<a href="<?= base_url() ?>karyawan">View Detail <i class="fa fa-arrow-circle-o-right"></i></a>
 				</div>
 			</div>
 		</div>
-		<!-- end col-3 -->
-		<!-- begin col-3 -->
 		<div class="col-md-3 col-sm-6">
 			<div class="widget widget-stats bg-red">
-				<div class="stats-icon"><i class="fa fa-clock-o"></i></div>
+				<div class="stats-icon"><i class="fa fa-list"></i></div>
 				<div class="stats-info">
-					<h4>AVG TIME ON SITE</h4>
-					<p>00:12:23</p>
+					<h4>DATA JABATAN</h4>
+					<?php
+					$jabatan = $this->db->get('jabatan')->num_rows();
+					?>
+					<p><?= $jabatan ?> Data</p>
 				</div>
 				<div class="stats-link">
-					<a href="javascript:;">View Detail <i class="fa fa-arrow-circle-o-right"></i></a>
+					<?php if ($this->fungsi->user_login()->level_id == 1) { ?>
+						<a href="<?= base_url() ?>jabatan">View Detail <i class="fa fa-arrow-circle-o-right"></i></a>
+					<?php } else { ?>
+						<a href="">Akses for Admin <i class="fa fa-arrow-circle-o-right"></i></a>
+					<?php } ?>
 				</div>
 			</div>
 		</div>
 
-		<script src="https://code.highcharts.com/highcharts.js"></script>
+		<div class="col-md-3 col-sm-6">
+			<div class="widget widget-stats bg-blue">
+				<div class="stats-icon"><i class="fa fa-list"></i></div>
+				<div class="stats-info">
+					<h4>DATA DEPARTEMEN</h4>
+					<?php
+					$departemen = $this->db->get('departemen')->num_rows();
+					?>
+					<p><?= $departemen ?> Data</p>
+				</div>
+				<div class="stats-link">
+					<?php if ($this->fungsi->user_login()->level_id == 1) { ?>
+						<a href="<?= base_url() ?>departemen">View Detail <i class="fa fa-arrow-circle-o-right"></i></a>
+					<?php } else { ?>
+						<a href="">Akses for Admin <i class="fa fa-arrow-circle-o-right"></i></a>
+					<?php } ?>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3 col-sm-6">
+			<div class="widget widget-stats bg-purple">
+				<div class="stats-icon"><i class="fa fa-list"></i></div>
+				<div class="stats-info">
+					<h4>DATA KATEGORI</h4>
+					<?php
+					$kategori = $this->db->get('kategori')->num_rows();
+					?>
+					<p><?= $kategori ?> Data</p>
+				</div>
+				<div class="stats-link">
+					<?php if ($this->fungsi->user_login()->level_id == 1) { ?>
+						<a href="<?= base_url() ?>kategori">View Detail <i class="fa fa-arrow-circle-o-right"></i></a>
+					<?php } else { ?>
+						<a href="">Akses for Admin <i class="fa fa-arrow-circle-o-right"></i></a>
+					<?php } ?>
+
+				</div>
+			</div>
+		</div>
+		<center><img src="<?= base_url() ?>temp/assets/logo.png" style="width: 80%;margin-top:40px" alt="Logo PT Japenansi Nusantara">
+		</center>
+
+		<!-- <script src="https://code.highcharts.com/highcharts.js"></script>
 		<script src="https://code.highcharts.com/modules/exporting.js"></script>
 		<script src="https://code.highcharts.com/modules/export-data.js"></script>
 		<script src="https://code.highcharts.com/modules/accessibility.js"></script>
-		
+
 		<script src="https://code.highcharts.com/modules/data.js"></script>
 		<script src="https://code.highcharts.com/modules/drilldown.js"></script>
-		
-		
-		
-
 
 		<div class="col-md-6 ui-sortable">
 			<div class="panel panel-inverse" data-sortable-id="index-1">
@@ -97,12 +113,10 @@
 					<h4 class="panel-title">Website Analytics (Last 7 Days)</h4>
 				</div>
 				<div class="panel-body">
-				<div id="container2"></div>
+					<div id="container2"></div>
 				</div>
 			</div>
 		</div>
-
-		<!-- end col-3 -->
 	</div>
 </div>
 
@@ -122,8 +136,6 @@
 			};
 		})
 	});
-
-	// Build the chart
 	Highcharts.chart('container2', {
 		chart: {
 			plotBackgroundColor: null,
@@ -173,7 +185,6 @@
 </script>
 
 <script>
-	// Create the chart
 	Highcharts.chart('container', {
 		chart: {
 			type: 'column'
@@ -259,4 +270,4 @@
 			]
 		}],
 	});
-</script>
+</script> -->
