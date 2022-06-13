@@ -27,3 +27,18 @@ function check_admin()
 		redirect('dashboard_user');
 	}
 }
+
+function getNilai($karyawan_id, $kategori_id, $priode)
+{
+	$ci = &get_instance();
+
+	$jml = $ci->db->query("SELECT * FROM nilai WHERE karyawan_id ='$karyawan_id' AND kategori_id ='$kategori_id' AND priode ='$priode'");
+
+	if ($jml->num_rows() == 0) {
+		$value = 0;
+	} else {
+		$x = $jml->row();
+		$value = $x->nilai;
+	}
+	return $value;
+}
