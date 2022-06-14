@@ -9,7 +9,8 @@
 					<?php
 					$priode = $_GET['p'];
 					$kategori_id =  $_GET['k'];
-					$dataKategori = $this->db->query('SELECT * FROM kategori  ORDER BY kategori_id ASC') ?>
+					$dataKategori = $this->db->query('SELECT * FROM kategori  ORDER BY kategori_id ASC');
+					?>
 
 					<?php foreach ($dataKategori->result() as $row) { ?>
 						<?php if ($kategori_id == $row->kategori_id) { ?>
@@ -17,9 +18,21 @@
 								Kategori <?= $row->kode_kategori ?>
 							</a>
 						<?php } else { ?>
-							<a href="<?= base_url() ?>penilaian/step?p=<?= $priode ?>&k=<?= $row->kategori_id ?>" class="btn btn-success" style="margin-bottom: 5px;">
-								Kategori <?= $row->kode_kategori ?>
-							</a>
+							<?php
+							// cek sudah ada penilaian blm
+							$jmlPenialaian = $this->db->query("SELECT * FROM nilai where priode='$priode' and kategori_id='$row->kategori_id'");
+							$jml = $jmlPenialaian->num_rows();  ?>
+
+							<?php if ($jml > 0) { ?>
+								<a href="<?= base_url() ?>penilaian/step?p=<?= $priode ?>&k=<?= $row->kategori_id ?>" class="btn btn-primary" style="margin-bottom: 5px;">
+									Kategori <?= $row->kode_kategori ?>
+								</a>
+							<?php } else { ?>
+								<a href="<?= base_url() ?>penilaian/step?p=<?= $priode ?>&k=<?= $row->kategori_id ?>" class="btn btn-success" style="margin-bottom: 5px;">
+									Kategori <?= $row->kode_kategori ?>
+								</a>
+							<?php } ?>
+
 						<?php } ?>
 
 					<?php } ?>
@@ -35,7 +48,8 @@
 					<h4 class="panel-title">Penilaian Kategori <?= $query->kode_kategori ?> : <?= $query->nama_kategori ?> ( Bobot Maks : <?= $query->bobot ?> Point) </h4>
 				</div>
 				<div class="panel-body">
-					<form class=""action="<?= base_url() ?>penilaian/step" method="GET">
+					<!-- <form class="" action="<?= base_url() ?>penilaian/step" method="GET"> -->
+					<form class="" action="<?= base_url() ?>penilaian/addPenilaian" method="POST">
 						<table id="" class="table table-bordered table-hover table-td-valign-middle">
 							<thead>
 								<tr>
@@ -48,11 +62,16 @@
 							$no = 1;
 							$pegawai = $this->db->query("SELECT * from karyawan where jabatan_id='2'");
 							?>
+							<input type="hidden" value="<?= $priode ?>" name="priode">
+							<input type="hidden" name="kategori_id" value="<?= $kategori_id ?>">
 							<?php foreach ($pegawai->result() as $row) { ?>
 								<tr>
 									<td><?= $no++ ?></td>
 									<td><?= $row->nama_karyawan  ?></td>
-									<td><input type="number" required max="<?= $query->bobot ?>" min="0" class="form-control" name="nilai[]" id="nialai" placeholder="Nilai" value="<?= getNilai($row->karyawan_id, $kategori_id, $priode) ?>" /></td>
+									<td>
+										<input type="hidden" value="<?= $row->karyawan_id ?>" name="karyawan_id[]">
+										<input type="number" required max="<?= $query->bobot ?>" min="0" class="form-control" name="nilai[]" id="nialai" placeholder="Nilai" value="<?= getNilai($row->karyawan_id, $kategori_id, $priode) ?>" />
+									</td>
 								</tr>
 							<?php } ?>
 						</table>
@@ -65,7 +84,7 @@
 						<?php if ($kategori_id == $lastID) { ?>
 							<input type="hidden" required name="p" value="<?= $priode ?>">
 							<input type="hidden" required name="k" value="<?= $kategori_id + 1 ?>">
-							<button class="btn btn-danger" type="submit" style="float: right;">
+							<button class="btn btn-danger" type="submit" style="float: right;" onclick="return confirm('Yakin selesaikan proses penilaian ?.. Pastikan semua sudah terisi');">
 								<i class="fa fa-arrow-right"></i>
 								Finish
 							</button>

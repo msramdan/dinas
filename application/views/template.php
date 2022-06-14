@@ -124,7 +124,7 @@
 						<li><a href="<?= base_url() ?>departemen"><i class="fa fa-list"></i> <span>Departemen</span></a></li>
 						<li><a href="<?= base_url() ?>kategori"><i class="fa fa-list"></i> <span>Kategori</span></a></li>
 						<li><a href="<?= base_url() ?>penilaian"><i class="fa fa-wpforms"></i> <span>Penilaian</span></a></li>
-						<li><a href="<?= base_url() ?>karyawan"><i class="fa fa-book"></i> <span>Laporan</span></a></li>
+						<li><a href="<?= base_url() ?>laporan"><i class="fa fa-book"></i> <span>Laporan</span></a></li>
 						<li class="has-sub">
 							<a href="javascript:;">
 								<b class="caret pull-right"></b>
@@ -142,7 +142,7 @@
 						<li><a href="<?= base_url() ?>dashboard"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
 						<li><a href="<?= base_url() ?>karyawan"><i class="fa fa-users"></i> <span>Karyawan</span></a></li>
 						<li><a href="<?= base_url() ?>penilaian"><i class="fa fa-wpforms"></i> <span>Penilaian</span></a></li>
-						<li><a href="<?= base_url() ?>karyawan"><i class="fa fa-book"></i> <span>Laporan</span></a></li>
+						<li><a href="<?= base_url() ?>laporan"><i class="fa fa-book"></i> <span>Laporan</span></a></li>
 					<?php } else { ?>
 
 					<?php } ?>

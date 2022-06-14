@@ -118,7 +118,15 @@ class Kategori extends CI_Controller
 
 		if ($row) {
 			$this->Kategori_model->delete(decrypt_url($id));
-			$this->session->set_flashdata('message', 'Delete Record Success');
+			$error = $this->db->error();
+			if ($error['code'] != 0) {
+				$this->session->set_flashdata('error', 'Data tidak bisa di delete, sudah berelasi');
+			}else{
+				$this->session->set_flashdata('message', 'Delete Record Success');
+			}
+
+
+			
 			redirect(site_url('kategori'));
 		} else {
 			$this->session->set_flashdata('message', 'Record Not Found');

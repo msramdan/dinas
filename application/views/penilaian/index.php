@@ -4,7 +4,7 @@
 		<li class="active">Penialaian</li>
 	</ol>
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-md-6">
 			<div class="panel panel-inverse">
 				<div class="panel-heading">
 					<div class="panel-heading-btn">
