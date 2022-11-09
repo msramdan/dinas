@@ -185,8 +185,6 @@ class Panel extends CI_Controller {
 
 	// ================================================ END INFORMASI =======================================================================
 
-
-	
 	// ================================================ START KOMODITAS =====================================================================
 	public function komoditas()
 	{
@@ -319,6 +317,18 @@ class Panel extends CI_Controller {
             redirect(site_url('panel/komoditas'));
         }
     }
+
+	public function update_harga(){
+		$id = $this->input->post('komoditas_id_modal');
+		$data = array(
+				'harga_pedagang' => $this->input->post('harga_pedagang'),
+				'user_validasi_harga' =>$this->fungsi->user_dinas()->user_dinas_id
+		);
+		$this->db->where('komoditas_id', $id);
+		$this->db->update('komoditas', $data);
+		$this->session->set_flashdata('message', 'Update harga pedagangan berhasil');
+        redirect(site_url('panel/komoditas'));
+	}
 
     public function _rules_komoditas() 
     {

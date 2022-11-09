@@ -19,6 +19,7 @@ class Komoditas_model extends CI_Model
     function get_all()
     {
 		$this->db->join('user_dinas', 'user_dinas.user_dinas_id = komoditas.user_dinas_id', 'left');
+		// $this->db->join('user_dinas', 'user_dinas.user_dinas_id = komoditas.user_validasi_harga', 'left');
 		$this->db->join('produk', 'produk.produk_id = komoditas.produk_id', 'left');
         $this->db->order_by($this->id, $this->order);
         return $this->db->get($this->table)->result();

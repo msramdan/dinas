@@ -50,5 +50,11 @@ function rupiah($angka){
 	
 	$hasil_rupiah = "Rp " . number_format($angka,2,',','.');
 	return $hasil_rupiah;
- 
+}
+
+function username_dinas($user_id)
+{
+	$ci = &get_instance();
+	$data = $ci->db->query("SELECT * FROM user_dinas where user_dinas_id='" . $user_id . "'")->row();
+	return $data->username;
 }

@@ -85,7 +85,7 @@
 
         <center>
 
-            <img src="<?= base_url() ?>temp/img/logo.png" alt="" style="width: 450px;margin-top:20px">
+            <img src="<?= base_url() ?>temp/img/logo.png" alt="" style="width: 45%;margin-top:20px">
         </center>
     </div>
 </div>

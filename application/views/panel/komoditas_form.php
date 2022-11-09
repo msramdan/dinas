@@ -50,12 +50,12 @@
 
                                 <tr>
                                     <td>Stok (Ton) <?php echo form_error('stok') ?></td>
-                                    <td><input type="number" class="form-control" name="stok" id="stok"
+                                    <td><input step="any" type="number" class="form-control" name="stok" id="stok"
                                             placeholder="Stok" value="<?php echo $stok; ?>" /></td>
                                 </tr>
                                 <tr>
                                     <td>Rencana Produksi (Ton) <?php echo form_error('rencana_produksi') ?></td>
-                                    <td><input type="number" class="form-control" name="rencana_produksi"
+                                    <td><input step="any" type="number" class="form-control" name="rencana_produksi"
                                             id="rencana_produksi" placeholder="Rencana Produksi"
                                             value="<?php echo $rencana_produksi; ?>" /></td>
                                 </tr>
@@ -85,7 +85,7 @@
 
                                             <div class="col-md-6">
                                                 <input type="number" class="form-control" name="jml_produksi_minggu"
-                                                    id="jml_produksi_minggu" placeholder="Jml Produksi (Kg)"
+                                                    id="jml_produksi_minggu" step="any" placeholder="Jml Produksi (Kg)"
                                                     value="<?php echo $jml_produksi_minggu; ?>" />
                                             </div>
                                         </div>
