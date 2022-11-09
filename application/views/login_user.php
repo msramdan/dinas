@@ -39,7 +39,7 @@
             <!-- begin brand -->
             <div class="login-header">
                 <div class="brand">
-                    <span class="logo"></span> Login Admin
+                    <span class="logo"></span> Login User Dinas
                     <small>Sistem Informasi Pengendalian Inflasi Terintegrasi</small>
                 </div>
                 <div class="icon">
@@ -49,7 +49,7 @@
             <!-- end brand -->
             <div class="login-content">
                 <?php $this->view('messages') ?>
-                <form action="<?= site_url('auth/process') ?>" method="POST" class="margin-bottom-0">
+                <form action="<?= site_url('panel/process') ?>" method="POST" class="margin-bottom-0">
                     <div class="form-group m-b-20">
                         <input type="text" name="username" class="form-control input-lg" placeholder="Username"
                             required />
@@ -67,7 +67,7 @@
                         <button type="submit" name="login" class="btn btn-success btn-block btn-lg">Sign In</button>
                     </div>
                     <div class="m-t-20">
-                        Halaman Login User Dinas <a href="<?= base_url() ?>panel_user">Klik Disini</a>.
+                        Halaman Login User Admin <a href="<?= base_url() ?>panel_admin">Klik Disini</a>.
                     </div>
 
                 </form>

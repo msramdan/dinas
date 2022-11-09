@@ -44,7 +44,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     <h4 class="modal-title">Update Password</h4>
                 </div>
-                <form action="<?= base_url() ?>user/ganti_password/<?= $this->fungsi->user_login()->user_id  ?>"
+                <form action="<?= base_url() ?>panel/ganti_password/<?= $this->fungsi->user_dinas()->user_dinas_id  ?>"
                     method="post" class="form">
                     <div class="modal-body">
                         <div class="form-group">
@@ -81,7 +81,7 @@
             <div class="container-fluid">
                 <!-- begin mobile sidebar expand / collapse button -->
                 <div class="navbar-header">
-                    <a href="<?= base_url() ?>dashboard" class="navbar-brand"><span class="navbar-logo"></span>Aplikasi
+                    <a href="<?= base_url() ?>panel" class="navbar-brand"><span class="navbar-logo"></span>Aplikasi
                         SIPIT</a>
                     <button type="button" class="navbar-toggle" data-click="sidebar-toggled">
                         <span class="icon-bar"></span>
@@ -96,13 +96,13 @@
                     <li class="dropdown navbar-user">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="<?= base_url() ?>temp/assets/img/user/admins.png" alt="" />
-                            <span class="hidden-xs"> <?=  $this->fungsi->user_login()->username ?> </span>
+                            <span class="hidden-xs"> <?= ucfirst($this->fungsi->user_dinas()->username)   ?> </span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu animated fadeInLeft">
                             <li class="arrow"></li>
                             <li><a href="#modal-dialog" data-toggle="modal">Ganti Password</a></li>
-                            <li><a href="<?= base_url() ?>auth/logout">Log Out</a></li>
+                            <li><a href="<?= base_url() ?>panel/logout">Log Out</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -119,7 +119,7 @@
                                     alt="" /></a>
                         </div>
                         <div class="info">
-                            <?= $this->fungsi->user_login()->username ?>
+                            <?= ucfirst($this->fungsi->user_dinas()->username) ?>
                         </div>
                     </li>
                 </ul>
@@ -127,61 +127,23 @@
                 <!-- begin sidebar nav -->
                 <ul class="nav">
                     <li class="nav-header">Main Menu</li>
-                    <li><a href="<?= base_url() ?>dashboard"><i class="fa fa-home"></i> <span>Dashboard</span></a>
+                    <li><a href="<?= base_url() ?>panel"><i class="fa fa-home"></i> <span>Dashboard</span></a>
                     </li>
-                    <li class="has-sub">
-                        <a href="javascript:;">
-                            <b class="caret pull-right"></b>
-                            <i class="fa fa-list"></i>
-                            <span>Komoditas</span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li><a href="<?= base_url() ?>komoditas">Form Data Komoditas</a></li>
-                            <li><a href="<?= base_url() ?>produk">Data Produk</a></li>
-                        </ul>
-                    </li>
-                    <li class="has-sub">
-                        <a href="javascript:;">
-                            <b class="caret pull-right"></b>
-                            <i class="fa fa-info"></i>
-                            <span>Informasi</span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li><a href="<?= base_url() ?>informasi">Data Informasi</a></li>
-                            <li><a href="<?= base_url() ?>kategori">Kategori Informasi</a></li>
-                        </ul>
-                    </li>
-                    <li class="has-sub">
-                        <a href="javascript:;">
-                            <b class="caret pull-right"></b>
-                            <i class="fa fa-users"></i>
-                            <span>Kontributor Dinas</span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li><a href="<?= base_url() ?>user_dinas">User Dinas</a></li>
-                            <li><a href="<?= base_url() ?>dinas">Dinas Terdaftar</a></li>
-                        </ul>
-                    </li>
-                    <li class="has-sub">
-                        <a href="javascript:;">
-                            <b class="caret pull-right"></b>
-                            <i class="fa fa-info"></i>
-                            <span>Website</span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li><a href="<?= base_url() ?>informasi">Banner Managament</a></li>
-                            <li><a href="<?= base_url() ?>kategori">About Us</a></li>
-                            <li><a href="<?= base_url() ?>kategori">Kontak</a></li>
-                        </ul>
-                    </li>
+                    <?php if($this->fungsi->user_dinas()->can_input_komoditas=='Ya'){ ?>
+                    <li><a href="<?= base_url() ?>panel/komoditas"><i class="fa fa-list"></i> <span>Data
+                                Komoditas</span></a></li>
+                    <?php } ?>
 
-                    <li><a href="<?= base_url() ?>user"><i class="fa fa-user"></i> <span>User Admin</span></a>
-                    </li>
-                    <li><a href="<?= base_url() ?>auth/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>
+                    <?php if($this->fungsi->user_dinas()->can_input_informasi=='Ya'){ ?>
+                    <li><a href="<?= base_url() ?>panel/informasi"><i class="fa fa-info"></i> <span>Data
+                                Informasi</span></a></li>
+                    <?php } ?>
+                    <li><a href="<?= base_url() ?>panel/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>
                             <span>Logout</span></a>
                     </li>
                     <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i
                                 class="fa fa-angle-double-left"></i></a></li>
+
                 </ul>
             </div>
         </div>
@@ -231,6 +193,8 @@
     });
     </script>
 </body>
+
+
 
 
 </html>

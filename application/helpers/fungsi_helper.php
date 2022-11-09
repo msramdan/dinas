@@ -10,12 +10,30 @@ function check_already_login()
 	}
 }
 
+function check_already_login_user_dinas()
+{
+	$ci = &get_instance();
+	$user_session_dinas = $ci->session->userdata('user_dinas_id');
+	if ($user_session_dinas) {
+		redirect('panel');
+	}
+}
+
 function is_login()
 {
 	$ci = &get_instance();
 	$user_session = $ci->session->userdata('userid');
 	if (!$user_session) {
 		redirect('auth');
+	}
+}
+
+function is_login_user_dinas()
+{
+	$ci = &get_instance();
+	$user_session = $ci->session->userdata('user_dinas_id');
+	if (!$user_session) {
+		redirect('panel_user');
 	}
 }
 
@@ -28,17 +46,9 @@ function check_admin()
 	}
 }
 
-function getNilai($karyawan_id, $kategori_id, $priode)
-{
-	$ci = &get_instance();
-
-	$jml = $ci->db->query("SELECT * FROM nilai WHERE karyawan_id ='$karyawan_id' AND kategori_id ='$kategori_id' AND priode ='$priode'");
-
-	if ($jml->num_rows() == 0) {
-		$value = 0;
-	} else {
-		$x = $jml->row();
-		$value = $x->nilai;
-	}
-	return $value;
+function rupiah($angka){
+	
+	$hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+	return $hasil_rupiah;
+ 
 }

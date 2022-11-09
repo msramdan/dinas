@@ -9,6 +9,7 @@ class User extends CI_Controller
 	{
 		parent::__construct();
 		is_login();
+		check_admin();
 		$this->load->model('User_model');
 		$this->load->library('form_validation');
 	}
@@ -61,7 +62,7 @@ class User extends CI_Controller
 		} else {
 			$data = array(
 				'username' => $this->input->post('username', TRUE),
-				'password' => $this->input->post('password', TRUE),
+				'password' => sha1($this->input->post('password', TRUE)),
 				'level_id' => $this->input->post('level_id', TRUE),
 			);
 
