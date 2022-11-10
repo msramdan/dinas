@@ -165,13 +165,15 @@
                     <li class="has-sub">
                         <a href="javascript:;">
                             <b class="caret pull-right"></b>
-                            <i class="fa fa-info"></i>
+                            <i class="fa fa-globe"></i>
                             <span>Website</span>
                         </a>
                         <ul class="sub-menu">
                             <li><a href="<?= base_url() ?>informasi">Banner Managament</a></li>
-                            <li><a href="<?= base_url() ?>kategori">About Us</a></li>
-                            <li><a href="<?= base_url() ?>kategori">Kontak</a></li>
+                            <li><a href="<?= base_url() ?>setting_website/update/Umhxc2ZDeHlpc1JpYWNIUVdzNG1sZz09">About
+                                    Us</a>
+                            </li>
+                            <li><a href="<?= base_url() ?>kontak">Kontak</a></li>
                         </ul>
                     </li>
 
@@ -231,6 +233,8 @@
     });
     </script>
 </body>
+
+
 
 
 </html>

@@ -106,7 +106,7 @@ class Panel extends CI_Controller {
 				'thumbnail' => set_value('thumbnail', $row->thumbnail),
 				'status' => set_value('status', $row->status),
 			);
-			$this->template->load('template_user', 'informasi/informasi_form', $data);
+			$this->template->load('template_user', 'panel/informasi_form', $data);
 		} else {
 			$this->session->set_flashdata('message', 'Record Not Found');
 			redirect(site_url('panel/informasi'));

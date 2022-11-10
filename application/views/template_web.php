@@ -28,7 +28,7 @@
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="<?= base_url() ?>temp/frontend/assets/css/responsive.css">
 
-    <title>Website Aplikasi SIPIT</title>
+    <title><?= $setting->nama_website ?></title>
 
     <link rel="icon" type="image/png" href="<?= base_url() ?>temp/frontend/assets/img/favicon.png">
 </head>
@@ -55,7 +55,7 @@
             <div class="container">
                 <div class="main-responsive-menu">
                     <div class="logo">
-                        <a href="index.html">
+                        <a href="<?= base_url() ?>">
                             <img src="<?= base_url() ?>temp/frontend/assets/img/logo-1.png" class="black-logo"
                                 alt="image">
                             <img src="<?= base_url() ?>temp/frontend/assets/img/logo-3.png" class="white-logo"
@@ -69,7 +69,7 @@
         <div class="main-navbar">
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="<?= base_url() ?>">
                         <img src="<?= base_url() ?>temp/frontend/assets/img/logo-1.png" class="black-logo" alt="image">
                         <img src="<?= base_url() ?>temp/frontend/assets/img/logo-3.png" class="white-logo" alt="image">
                     </a>
@@ -83,21 +83,21 @@
                             </li>
 
                             <li class="nav-item">
-                                <a href="politics.html" class="nav-link">
+                                <a href="<?= base_url() ?>web/komoditas" class="nav-link">
                                     Info Komoditas
                                 </a>
                             </li>
 
                             <?php foreach ($kategori_data as $row) { ?>
                             <li class="nav-item">
-                                <a href="business.html" class="nav-link">
+                                <a href="<?= base_url() ?>web/kategori/1" class="nav-link">
                                     <?= $row->nama_kategori ?>
                                 </a>
                             </li>
                             <?php } ?>
 
                             <li class="nav-item">
-                                <a href="business.html" class="nav-link">
+                                <a href="<?= base_url() ?>web/kontak" class="nav-link">
                                     Kontak
                                 </a>
                             </li>
@@ -107,219 +107,15 @@
             </div>
         </div>
     </div>
-    <!-- End Navbar Area -->
+    <div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>"></div>
+    <?php if ($this->session->flashdata('message')) : ?>
+    <?php endif; ?>
 
-    <!-- Start Main News Area -->
-    <section class="main-news-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="default-news-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="row">
-                        <div class="politics-news">
-                            <div class="section-title">
-                                <h2>Tentang Kami</h2>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="single-politics-news">
-                                        <div class="politics-news-image">
-                                            <a href="#">
-                                                <img src="<?= base_url() ?>temp/frontend/assets/img/politics-news/politics-news-1.jpg"
-                                                    alt="image">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-6">
-                                    <p style="text-align: justify;">Contrary to popular belief, Lorem Ipsum is not
-                                        simply random text. It has roots
-                                        in a piece of classical Latin literature from 45 BC, making it over 2000 years
-                                        old. Richard McClintock, a Latin professor at Hampden-Sydney College in
-                                        Virginia, looked up one of the more obscure Latin words, consectetur, from a
-                                        Lorem Ipsum passage, and going through the cites of the word in classical
-                                        literature, discovered the undoubtable source. Lorem Ipsum comes from sections
-                                        1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and
-                                        Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of
-                                        ethics, very popular during the Renaissance. The first line of Lorem Ipsum,
-                                        "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-12">
-                            <br>
-                            <section class="news-area">
-                                <div class="section-title">
-                                    <h2>New Post</h2>
-                                </div>
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="single-news-item">
-                                                <div class="news-image">
-                                                    <a href="#">
-                                                        <img src="<?= base_url() ?>temp/frontend/assets/img/news/news-1.jpg"
-                                                            alt="image">
-                                                    </a>
-                                                </div>
-
-                                                <div class="news-content mt-20">
-                                                    <span>Politics</span>
-                                                    <h6>
-                                                        <a href="#">Trump discusses various issues with his party’s
-                                                            political leaders.</a>
-                                                    </h6>
-                                                    <a href="#">Patricia</a> / 28 September, 2022</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="single-news-item">
-                                                <div class="news-image">
-                                                    <a href="#">
-                                                        <img src="<?= base_url() ?>temp/frontend/assets/img/news/news-1.jpg"
-                                                            alt="image">
-                                                    </a>
-                                                </div>
-
-                                                <div class="news-content mt-20">
-                                                    <span>Politics</span>
-                                                    <h6>
-                                                        <a href="#">Trump discusses various issues with his party’s
-                                                            political leaders.</a>
-                                                    </h6>
-                                                    <a href="#">Patricia</a> / 28 September, 2022</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="single-news-item">
-                                                <div class="news-image">
-                                                    <a href="#">
-                                                        <img src="<?= base_url() ?>temp/frontend/assets/img/news/news-1.jpg"
-                                                            alt="image">
-                                                    </a>
-                                                </div>
-
-                                                <div class="news-content mt-20">
-                                                    <span>Politics</span>
-                                                    <h6>
-                                                        <a href="#">Trump discusses various issues with his party’s
-                                                            political leaders.</a>
-                                                    </h6>
-                                                    <a href="#">Patricia</a> / 28 September, 2022</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="single-news-item">
-                                                <div class="news-image">
-                                                    <a href="#">
-                                                        <img src="<?= base_url() ?>temp/frontend/assets/img/news/news-1.jpg"
-                                                            alt="image">
-                                                    </a>
-                                                </div>
-
-                                                <div class="news-content mt-20">
-                                                    <span>Politics</span>
-                                                    <h6>
-                                                        <a href="#">Trump discusses various issues with his party’s
-                                                            political leaders.</a>
-                                                    </h6>
-                                                    <a href="#">Patricia</a> / 28 September, 2022</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="single-news-item">
-                                                <div class="news-image">
-                                                    <a href="#">
-                                                        <img src="<?= base_url() ?>temp/frontend/assets/img/news/news-1.jpg"
-                                                            alt="image">
-                                                    </a>
-                                                </div>
-
-                                                <div class="news-content mt-20">
-                                                    <span>Politics</span>
-                                                    <h6>
-                                                        <a href="#">Trump discusses various issues with his party’s
-                                                            political leaders.</a>
-                                                    </h6>
-                                                    <a href="#">Patricia</a> / 28 September, 2022</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="single-news-item">
-                                                <div class="news-image">
-                                                    <a href="#">
-                                                        <img src="<?= base_url() ?>temp/frontend/assets/img/news/news-1.jpg"
-                                                            alt="image">
-                                                    </a>
-                                                </div>
-
-                                                <div class="news-content mt-20">
-                                                    <span>Politics</span>
-                                                    <h6>
-                                                        <a href="#">Trump discusses various issues with his party’s
-                                                            political leaders.</a>
-                                                    </h6>
-                                                    <a href="#">Patricia</a> / 28 September, 2022</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <aside class="widget-area">
-                        <section class="widget widget_latest_news_thumb">
-                            <!-- <h3 class="widget-title"> Grafik Informasi</h3> -->
-                            <script src="https://code.highcharts.com/highcharts.js"></script>
-                            <script src="https://code.highcharts.com/modules/exporting.js"></script>
-                            <script src="https://code.highcharts.com/modules/export-data.js"></script>
-                            <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-
-                            <figure class="highcharts-figure">
-                                <div id="container"></div>
-                            </figure>
-
-
-                        </section>
-                        <section class="widget widget_latest_news_thumb">
-                            <h3 class="widget-title">Kategori Informasi</h3>
-                            <div class="tagcloud">
-
-                                <?php foreach ($kategori_data as $row) { ?>
-                                <a href="#"><?= $row->nama_kategori ?></a>
-                                <?php } ?>
-                            </div>
-                        </section>
-                    </aside>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Default News Area -->
-
-    <!-- Start Footer Area -->
+    <div class="flash-data2" data-flashdata2="<?= $this->session->flashdata('error'); ?>"></div>
+    <?php if ($this->session->flashdata('error')) : ?>
+    <?php endif; ?>
+    <!-- content -->
+    <?php echo $contents ?>
     <section class="footer-area pt-100 pb-70">
         <div class="container">
             <div class="row">
@@ -328,10 +124,7 @@
                         <a href="#">
                             <img src="<?= base_url() ?>temp/frontend/assets/img/logo-3.png" alt="image">
                         </a>
-                        <p style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <p style="text-align: justify;"><?= substr($setting->about_us,0,150) ?> ...</p>
 
 
                     </div>
@@ -392,7 +185,7 @@
                                 <a href="<?= base_url() ?>">Home</a>
                             </li>
                             <li>
-                                <a href="#">Info Komoditas</a>
+                                <a href="<?= base_url() ?>web/komoditas">Info Komoditas</a>
                             </li>
 
                             <?php foreach ($kategori_data as $row) { ?>
@@ -402,7 +195,7 @@
                             <?php } ?>
 
                             <li>
-                                <a href="#">Kontak</a>
+                                <a href="<?= base_url() ?>web/kontak">Kontak</a>
                             </li>
                         </ul>
                     </div>
@@ -414,27 +207,22 @@
 
                         <ul class="social">
                             <li>
-                                <a href="#" class="facebook" target="_blank">
+                                <a href="<?= $setting->url_fb ?>" class="facebook" target="_blank">
                                     <i class='bx bxl-facebook'></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="twitter" target="_blank">
+                                <a href="<?= $setting->url_ig ?>" class="twitter" target="_blank">
                                     <i class='bx bxl-instagram'></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="pinterest" target="_blank">
-                                    <i class='bx bxl-linkedin'></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="linkedin" target="_blank">
+                                <a href="<?= $setting->url_twitter ?>" class="linkedin" target="_blank">
                                     <i class='bx bxl-twitter'></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="linkedin" target="_blank">
+                                <a href="<?= $setting->url_yt ?>" class="linkedin" target="_blank">
                                     <i class='bx bxl-youtube'></i>
                                 </a>
                             </li>
@@ -444,38 +232,27 @@
             </div>
         </div>
     </section>
-    <!-- End Footer Area -->
-
-    <!-- Start Copy Right Area -->
     <div class="copyright-area">
         <div class="container">
             <div class="copyright-area-content">
                 <p>
                     Copyright © <script>
                     document.write(new Date().getFullYear())
-                    </script> Sistem Informasi Pengendalian Inflasi Terintegrasi
+                    </script> <?= $setting->nama_website ?>
                 </p>
             </div>
         </div>
     </div>
-    <!-- End Copy Right Area -->
-
-    <!-- Start Go Top Area -->
     <div class="go-top">
         <i class='bx bx-up-arrow-alt'></i>
     </div>
-    <!-- End Go Top Area -->
-
-    <!-- dark version -->
     <div class="dark-version">
-
         <label id="switch" class="switch">
             <input type="checkbox" onchange="toggleTheme()" id="slider">
             <span class="slider round"></span>
         </label>
     </div>
     <!-- dark version -->
-
     <!-- Jquery Slim JS -->
     <script src="<?= base_url() ?>temp/frontend/assets/js/jquery.min.js"></script>
     <!-- Popper JS -->
@@ -500,65 +277,10 @@
     <sc ript src="<?= base_url() ?>temp/frontend/assets/js/wow.min.js"></sc>
     <!-- Custom JS -->
     <script src="<?= base_url() ?>temp/frontend/assets/js/main.js"></script>
-    <script>
-    Highcharts.chart('container', {
-        chart: {
-            type: 'column'
-        },
-        title: {
-            text: 'Grafik Informasi Jumlah Informasi'
-        },
-
-        xAxis: {
-            type: 'category',
-            labels: {
-                rotation: -45,
-                style: {
-                    fontSize: '13px',
-                    fontFamily: 'Verdana, sans-serif'
-                }
-            }
-        },
-        yAxis: {
-            min: 0,
-            title: {
-                text: 'Jumlah Informasi'
-            }
-        },
-        legend: {
-            enabled: false
-        },
-        tooltip: {
-            pointFormat: 'Population in 2021: <b>{point.y:.1f} millions</b>'
-        },
-        series: [{
-            name: 'Population',
-            data: [
-                ['Tokyo', 37.33],
-                ['Delhi', 31.18],
-                ['Shanghai', 27.79],
-                ['Sao Paulo', 22.23],
-                ['Mexico City', 21.91],
-
-            ],
-            dataLabels: {
-                enabled: true,
-                rotation: -90,
-                color: '#FFFFFF',
-                align: 'right',
-                format: '{point.y:.1f}', // one decimal
-                y: 10, // 10 pixels down from the top
-                style: {
-                    fontSize: '13px',
-                    fontFamily: 'Verdana, sans-serif'
-                }
-            }
-        }]
-    });
-    </script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>temp/assets/js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>temp/assets/js/sweetalert.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="<?= base_url(); ?>temp/assets/js/dataflash.js"></script>
 </body>
-
-
-
 
 </html>
