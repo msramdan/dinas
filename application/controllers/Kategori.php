@@ -117,11 +117,14 @@ class Kategori extends CI_Controller
 
     public function _rules() 
     {
-	$this->form_validation->set_rules('nama_kategori', 'nama kategori', 'trim|required');
+        $this->form_validation->set_rules('nama_kategori', 'nama kategori', 'trim|required');
 
-	$this->form_validation->set_rules('kategori_id', 'kategori_id', 'trim');
-	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
+        $this->form_validation->set_rules('kategori_id', 'kategori_id', 'trim');
+        $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
+
     }
+
+    
 
 }
 

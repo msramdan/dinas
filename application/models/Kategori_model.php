@@ -58,4 +58,9 @@ class Kategori_model extends CI_Model
         $this->db->delete($this->table);
     }
 
+    public function count_information(){
+        $this->db->join('informasi', 'informasi.kategori_id = kategori.kategori_id', 'left');
+        return $this->db->get($this->table)->result();
+    }
+
 }

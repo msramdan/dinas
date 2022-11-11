@@ -25,6 +25,7 @@ class Informasi extends CI_Controller
 	}
 
 
+
 	public function create()
 	{
 		$kategori = $this->Kategori_model->get_all();
@@ -193,6 +194,27 @@ class Informasi extends CI_Controller
 		$this->db->update('informasi', $data);
 		$this->session->set_flashdata('message', 'Informasi Berhasil Di Set Draft');
 		redirect(site_url('informasi'));
+	}
+
+	public function ajax_image()
+	{
+		$config['upload_path']          = './temp/img/';
+		$config['allowed_types']        = 'gif|jpg|png|jpeg';
+		$config['encrypt_name']         = true;
+		$this->load->library('upload', $config);
+		$this->load->helper('debug');
+		if (!$this->upload->do_upload('file')) {
+			pJson([
+				'success' => false
+			]);
+		} else {
+			$data = $this->upload->data();
+			pJson([
+				'success' => true,
+				'url' => base_url('temp/img/' . $data['file_name'])
+			]);
+
+		}
 	}
 }
 

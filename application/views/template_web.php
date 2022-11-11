@@ -31,6 +31,14 @@
     <title><?= $setting->nama_website ?></title>
 
     <link rel="icon" type="image/png" href="<?= base_url() ?>temp/frontend/assets/img/favicon.png">
+    <link href="<?= base_url() ?>temp/assets/css/splide.min.css" rel="stylesheet" />
+    <script src="<?= base_url() ?>temp/assets/js/splide.min.js"></script>
+    <style>
+        .splide__slide img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
 
 <body>
@@ -56,10 +64,8 @@
                 <div class="main-responsive-menu">
                     <div class="logo">
                         <a href="<?= base_url() ?>">
-                            <img src="<?= base_url() ?>temp/frontend/assets/img/logo-1.png" class="black-logo"
-                                alt="image">
-                            <img src="<?= base_url() ?>temp/frontend/assets/img/logo-3.png" class="white-logo"
-                                alt="image">
+                            <img src="<?= base_url() ?>temp/frontend/assets/img/logo-1.png" class="black-logo" alt="image">
+                            <img src="<?= base_url() ?>temp/frontend/assets/img/logo-3.png" class="white-logo" alt="image">
                         </a>
                     </div>
                 </div>
@@ -89,11 +95,11 @@
                             </li>
 
                             <?php foreach ($kategori_data as $row) { ?>
-                            <li class="nav-item">
-                                <a href="<?= base_url() ?>web/kategori/1" class="nav-link">
-                                    <?= $row->nama_kategori ?>
-                                </a>
-                            </li>
+                                <li class="nav-item">
+                                    <a href="<?= base_url() ?>web/kategori/<?= $row->kategori_id ?>" class="nav-link">
+                                        <?= $row->nama_kategori ?>
+                                    </a>
+                                </li>
                             <?php } ?>
 
                             <li class="nav-item">
@@ -124,55 +130,43 @@
                         <a href="#">
                             <img src="<?= base_url() ?>temp/frontend/assets/img/logo-3.png" alt="image">
                         </a>
-                        <p style="text-align: justify;"><?= substr($setting->about_us,0,150) ?> ...</p>
+                        <p style="text-align: justify;"><?= substr($setting->about_us, 0, 150) ?> ...</p>
 
 
                     </div>
                 </div>
 
+                <?php 
+                    $posts = $this->db->order_by('tanggal', 'ASC')->limit(2)->get('informasi')->result();
+                ?>
                 <div class="col-lg-3 col-md-6">
                     <div class="single-footer-widget">
                         <h2>New Post</h2>
-
-                        <div class="post-content">
-                            <div class="row align-items-center">
-                                <div class="col-md-4">
-                                    <div class="post-image">
-                                        <a href="#">
-                                            <img src="<?= base_url() ?>temp/frontend/assets/img/recent-post/recent-post-1.jpg"
-                                                alt="image">
-                                        </a>
+                        <?php foreach($posts as $post) : ?>
+                            <?php 
+                                $tanggal = date_create($post->tanggal); 
+                                $tanggal = date_format($tanggal, 'd M Y');   
+                            ?>
+                            <div class="post-content">
+                                <div class="row align-items-center">
+                                    <div class="col-md-4">
+                                        <div class="post-image">
+                                            <a href="<?= base_url('temp/img/' . $post->thumbnail) ?> ">
+                                                <img src="<?= base_url('temp/img/' . $post->thumbnail) ?>" alt="image">
+                                            </a>
+                                        </div>
+                                    </div>
+    
+                                    <div class="col-md-8">
+                                        <h4>
+                                            <a href="<?= site_url('/web/informasi/' . $post->informasi_id) ?>"><?= $post->judul ?></a>
+                                        </h4>
+                                        <span><?= $tanggal ?></span>
                                     </div>
                                 </div>
-
-                                <div class="col-md-8">
-                                    <h4>
-                                        <a href="#">The match of the volleyball full of excitement</a>
-                                    </h4>
-                                    <span>28 Sep 2022</span>
-                                </div>
                             </div>
-                        </div>
+                        <?php endforeach; ?>
 
-                        <div class="post-content">
-                            <div class="row align-items-center">
-                                <div class="col-md-4">
-                                    <div class="post-image">
-                                        <a href="#">
-                                            <img src="<?= base_url() ?>temp/frontend/assets/img/recent-post/recent-post-3.jpg"
-                                                alt="image">
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-8">
-                                    <h4>
-                                        <a href="#">The match of the volleyball full of excitement</a>
-                                    </h4>
-                                    <span>28 Sep 2022</span>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
@@ -189,9 +183,9 @@
                             </li>
 
                             <?php foreach ($kategori_data as $row) { ?>
-                            <li>
-                                <a href="#"> <?= $row->nama_kategori ?></a>
-                            </li>
+                                <li>
+                                    <a href="<?= site_url('web/kategori/'. $row->kategori_id) ?>"> <?= $row->nama_kategori ?></a>
+                                </li>
                             <?php } ?>
 
                             <li>
@@ -237,7 +231,7 @@
             <div class="copyright-area-content">
                 <p>
                     Copyright © <script>
-                    document.write(new Date().getFullYear())
+                        document.write(new Date().getFullYear())
                     </script> <?= $setting->nama_website ?>
                 </p>
             </div>
