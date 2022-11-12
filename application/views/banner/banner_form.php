@@ -36,6 +36,7 @@
                                     <td>
                                         <div class="form-control-file">
                                             <input type="file" onchange="loadFile(event)" class="custom-file-input" name="banner" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+                                            <span class="text-danger">Note : Ukuran standar 1024×768 piksel</span>
                                         </div>
                                     </td>
                                 </tr>

@@ -63,4 +63,15 @@ class Kategori_model extends CI_Model
         return $this->db->get($this->table)->result();
     }
 
+    public function getInformasi ($kategori_id, $limit, $offset)
+    {
+        return $this->db
+            ->join('informasi', 'informasi.kategori_id = kategori.kategori_id', 'left')
+            ->join('user_dinas', 'user_dinas.user_dinas_id = informasi.author', 'left')
+            ->where('kategori.kategori_id', $kategori_id)
+            ->limit($limit, $offset)
+            ->get($this->table)
+            ->result();
+    }
+
 }

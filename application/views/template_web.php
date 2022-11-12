@@ -38,6 +38,14 @@
             width: 100%;
             height: auto;
         }
+
+        .disabled-link {
+            pointer-events: none;
+        }
+
+        .disabled-link:hover {
+            cursor: no-drop;
+        }
     </style>
 </head>
 
@@ -64,8 +72,8 @@
                 <div class="main-responsive-menu">
                     <div class="logo">
                         <a href="<?= base_url() ?>">
-                            <img src="<?= base_url() ?>temp/frontend/assets/img/logo-1.png" class="black-logo" alt="image">
-                            <img src="<?= base_url() ?>temp/frontend/assets/img/logo-3.png" class="white-logo" alt="image">
+                            <img src="<?= base_url() ?>temp/img/<?= $setting->logo_light ?>" class="black-logo" alt="image" width="75">
+                            <img src="<?= base_url() ?>temp/frontend/assets/img/<?= $setting->logo_dark ?>" class="white-logo" alt="image" width="75">
                         </a>
                     </div>
                 </div>
@@ -76,8 +84,8 @@
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light">
                     <a class="navbar-brand" href="<?= base_url() ?>">
-                        <img src="<?= base_url() ?>temp/frontend/assets/img/logo-1.png" class="black-logo" alt="image">
-                        <img src="<?= base_url() ?>temp/frontend/assets/img/logo-3.png" class="white-logo" alt="image">
+                        <img src="<?= base_url() ?>temp/img/<?= $setting->logo_light ?>" class="black-logo" alt="image" width="75">
+                        <img src="<?= base_url() ?>temp/img/<?= $setting->logo_dark ?>" class="white-logo" alt="image" width="75">
                     </a>
 
                     <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
@@ -128,7 +136,7 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="single-footer-widget">
                         <a href="#">
-                            <img src="<?= base_url() ?>temp/frontend/assets/img/logo-3.png" alt="image">
+                            <img src="<?= base_url() ?>temp/img/<?= $setting->logo_dark ?>" alt="image" width="200">
                         </a>
                         <p style="text-align: justify;"><?= substr($setting->about_us, 0, 150) ?> ...</p>
 
@@ -136,16 +144,16 @@
                     </div>
                 </div>
 
-                <?php 
-                    $posts = $this->db->order_by('tanggal', 'ASC')->limit(2)->get('informasi')->result();
+                <?php
+                $posts = $this->db->order_by('tanggal', 'ASC')->limit(2)->get('informasi')->result();
                 ?>
                 <div class="col-lg-3 col-md-6">
                     <div class="single-footer-widget">
                         <h2>New Post</h2>
-                        <?php foreach($posts as $post) : ?>
-                            <?php 
-                                $tanggal = date_create($post->tanggal); 
-                                $tanggal = date_format($tanggal, 'd M Y');   
+                        <?php foreach ($posts as $post) : ?>
+                            <?php
+                            $tanggal = date_create($post->tanggal);
+                            $tanggal = date_format($tanggal, 'd M Y');
                             ?>
                             <div class="post-content">
                                 <div class="row align-items-center">
@@ -156,7 +164,7 @@
                                             </a>
                                         </div>
                                     </div>
-    
+
                                     <div class="col-md-8">
                                         <h4>
                                             <a href="<?= site_url('/web/informasi/' . $post->informasi_id) ?>"><?= $post->judul ?></a>
@@ -184,7 +192,7 @@
 
                             <?php foreach ($kategori_data as $row) { ?>
                                 <li>
-                                    <a href="<?= site_url('web/kategori/'. $row->kategori_id) ?>"> <?= $row->nama_kategori ?></a>
+                                    <a href="<?= site_url('web/kategori/' . $row->kategori_id) ?>"> <?= $row->nama_kategori ?></a>
                                 </li>
                             <?php } ?>
 

@@ -56,12 +56,21 @@ class Web extends CI_Controller
 
 	public function kategori($id)
 	{
+		$page = $this->input->get('page') ?? 1;
+		$per_page = 6;
 		$kategori = $this->Kategori_model->get_all();
 		$setting = $this->Setting_website_model->get_by_id(1);
+		$informasi = $this->Kategori_model->getInformasi($id, $per_page, $per_page * ($page - 1) );
+
 		$data = array(
 			'kategori_data' => $kategori,
 			'setting' => $setting,
+			'page' => $page,
+			'per_page' => $per_page,
+			'total_halaman' => ceil($this->db->where('kategori_id', $id)->get('informasi')->num_rows() / $per_page),
+			'informasi' => $informasi
 		);
+
 		$this->template->load('template_web', 'web/kategori', $data);
 	}
 
@@ -107,5 +116,25 @@ class Web extends CI_Controller
 		$data['setting'] = $this->Setting_website_model->get_by_id(1);
 
 		$this->template->load('template_web', 'web/informasi_detail', $data);
+	}
+
+	public function ajax_image()
+	{
+		$config['upload_path']          = './temp/img/';
+		$config['allowed_types']        = 'gif|jpg|png|jpeg';
+		$config['encrypt_name']         = true;
+		$this->load->library('upload', $config);
+		$this->load->helper('debug');
+		if (!$this->upload->do_upload('file')) {
+			pJson([
+				'success' => false
+			]);
+		} else {
+			$data = $this->upload->data();
+			pJson([
+				'success' => true,
+				'url' => base_url('temp/img/' . $data['file_name'])
+			]);
+		}
 	}
 }
