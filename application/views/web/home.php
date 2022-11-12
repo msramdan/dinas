@@ -114,6 +114,7 @@
     const groupBy = function(xs, key) {
         return xs.reduce(function(rv, x) {
             (rv[x[key]] = rv[x[key]] || []).push(x);
+
             return rv;
         }, {});
     };
@@ -122,11 +123,10 @@
         try {
             const response = await fetch('<?= site_url('web/count_information_with_kategori') ?>')
             const responseData = await response.json();
-
             const dataGroup = groupBy(responseData, 'nama_kategori');
             const data = [];
             for (const key in dataGroup) {
-                data.push([key, dataGroup[key].length])
+                data.push([key, dataGroup[key].filter(val => val.informasi_id !=  null).length])
             }
             Highcharts.chart('container', {
                 chart: {
