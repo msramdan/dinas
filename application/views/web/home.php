@@ -16,32 +16,6 @@
 <section class="default-news-area">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4">
-                <aside class="widget-area">
-                    <section class="widget widget_latest_news_thumb">
-                        <!-- <h3 class="widget-title"> Grafik Informasi</h3> -->
-                        <script src="https://code.highcharts.com/highcharts.js"></script>
-                        <script src="https://code.highcharts.com/modules/exporting.js"></script>
-                        <script src="https://code.highcharts.com/modules/export-data.js"></script>
-                        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-
-                        <figure class="highcharts-figure">
-                            <div id="container"></div>
-                        </figure>
-
-
-                    </section>
-                    <section class="widget widget_latest_news_thumb">
-                        <h3 class="widget-title">Kategori Informasi</h3>
-                        <div class="tagcloud">
-
-                            <?php foreach ($kategori_data as $row) { ?>
-                                <a href="<?= site_url('/web/kategori/' . $row->kategori_id)  ?>"><?= $row->nama_kategori ?></a>
-                            <?php } ?>
-                        </div>
-                    </section>
-                </aside>
-            </div>
             <div class="col-lg-8">
                 <div class="row">
                     <div class="politics-news">
@@ -50,10 +24,6 @@
                         </div>
 
                         <div class="row">
-                            
-                            <div class="col-lg-6">
-                                <p style="text-align: justify;"><?= $setting->about_us ?></p>
-                            </div>
                             <div class="col-lg-6">
                                 <div class="single-politics-news">
                                     <div class="politics-news-image">
@@ -62,6 +32,9 @@
                                         </a>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <p style="text-align: justify;"><?= $setting->about_us ?></p>
                             </div>
                         </div>
                     </div>
@@ -102,7 +75,32 @@
 
                 </div>
             </div>
+            <div class="col-lg-4">
+                <aside class="widget-area">
+                    <section class="widget widget_latest_news_thumb">
+                        <!-- <h3 class="widget-title"> Grafik Informasi</h3> -->
+                        <script src="https://code.highcharts.com/highcharts.js"></script>
+                        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+                        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+                        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
+                        <figure class="highcharts-figure">
+                            <div id="container"></div>
+                        </figure>
+
+
+                    </section>
+                    <section class="widget widget_latest_news_thumb">
+                        <h3 class="widget-title">Kategori Informasi</h3>
+                        <div class="tagcloud">
+
+                            <?php foreach ($kategori_data as $row) { ?>
+                                <a href="<?= site_url('/web/kategori/' . $row->kategori_id)  ?>"><?= $row->nama_kategori ?></a>
+                            <?php } ?>
+                        </div>
+                    </section>
+                </aside>
+            </div>
 
         </div>
     </div>

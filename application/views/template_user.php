@@ -183,39 +183,37 @@
         $(document).ready(function() {
             App.init();
             TableManageDefault.init();
-        });
-    </script>
-    <script>
-        $(document).ready(function() {
-            $('#example').DataTable();
-        });
-
-        $('#deskripsi').summernote({
-            height: 200,
-            onImageUpload: function(files, editor, welEditable) {
-                console.log('event')
-                sendFile(files[0], editor, welEditable);
-            }
-        });
-
-        function sendFile(file, editor, welEditable) {
-            data = new FormData();
-            data.append("file", file);
-            $.ajax({
-                data: data,
-                type: "POST",
-                url: "<?= site_url('informasi/ajax_image') ?>",
-                cache: false,
-                contentType: false,
-                processData: false,
-                success: function(res) {
-                    console.log(res);
-                    if (res.success) {
-                        editor.insertImage(welEditable, res.url);
+            const editor = $('#deskripsi').summernote({
+                height: 200,
+                onImageUpload: function(files, editor, welEditable) {
+                    sendFile(files[0], editor, welEditable);
+                },
+                callbacks: {
+                    onImageUpload: function(image) {
+                        that = $(this);
+                        sendFile(image[0]);
                     }
                 }
             });
-        }
+
+            function sendFile(file, editor, welEditable) {
+                data = new FormData();
+                data.append("file", file);
+                $.ajax({
+                    data: data,
+                    type: "POST",
+                    url: "<?= site_url('web/ajax_image') ?>",
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function(res) {
+                        if (res.success) {
+                            $(that).summernote('insertImage', res.url)
+                        }
+                    }
+                });
+            }
+        });
     </script>
 </body>
 
