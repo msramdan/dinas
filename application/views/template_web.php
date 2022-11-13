@@ -27,6 +27,8 @@
     <link rel="stylesheet" href="<?= base_url() ?>temp/frontend/assets/css/dark.css">
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="<?= base_url() ?>temp/frontend/assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <title><?= $setting->nama_website ?></title>
 
@@ -113,6 +115,11 @@
                                 </a>
                             </li>
                             <?php } ?>
+                            <li class="nav-item">
+                                <a href="<?= base_url() ?>web/kontak" class="nav-link">
+                                    All Informasi
+                                </a>
+                            </li>
 
                             <li class="nav-item">
                                 <a href="<?= base_url() ?>web/kontak" class="nav-link">
@@ -285,11 +292,17 @@
     <sc ript src="<?= base_url() ?>temp/frontend/assets/js/wow.min.js"></sc>
     <!-- Custom JS -->
     <script src="<?= base_url() ?>temp/frontend/assets/js/main.js"></script>
-    <scri
-pt type="text/javascript" src="<?php echo base_url(); ?>temp/assets/js/sweetalert.min.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>temp/assets/js/sweetalert.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <script src="<?= base_url(); ?>temp/assets/js/dataflash.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <scri pt type="text/javascript" src="<?php echo base_url(); ?>temp/assets/js/sweetalert.min.js">
+        </script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>temp/assets/js/sweetalert.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+        <script src="<?= base_url(); ?>temp/assets/js/dataflash.js"></script>
+        <script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        });
+        </script>
 </body>
 
-</html>l>
+</html>

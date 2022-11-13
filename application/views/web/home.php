@@ -35,6 +35,12 @@
                             </div>
                             <div class="col-lg-6">
                                 <p style="text-align: justify;"><?= $setting->about_us ?></p>
+                                <button type="button" class="btn btn-danger"><i class="fa fa-envelope"
+                                        aria-hidden="true"></i> Email</button>
+                                <button type="button" class="btn btn-success"><i class="fa fa-whatsapp"></i>
+                                    Whatsapp</button>
+
+
                             </div>
                         </div>
                     </div>
@@ -183,6 +189,7 @@ async function getChart() {
         console.log(err)
     }
 }
+
 
 
 

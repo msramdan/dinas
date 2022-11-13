@@ -18,7 +18,7 @@ class Web extends CI_Controller
 
 	public function index()
 	{
-		$informasi= $this->Informasi_model->get_all(9, ['informasi.status' => 'publish']);
+		$informasi= $this->Informasi_model->get_all(6, ['informasi.status' => 'publish']);
 		$kategori = $this->Kategori_model->get_all();
 		$banner = $this->Banner_model->get_all();
 		$setting = $this->Setting_website_model->get_by_id(1);

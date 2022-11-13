@@ -66,7 +66,8 @@
                                                     <td><?php echo $komoditas->stok ?> Ton</td>
                                                     <td><?php echo $komoditas->rencana_produksi ?> Ton</td>
                                                     <td><?php echo $komoditas->ketahanan_bulanan ?> Bulan</td>
-                                                    <td><?php echo $komoditas->bulan_tahun ?></td>
+                                                    <td><?php echo date('F Y', strtotime($komoditas->bulan_tahun));  ?>
+                                                    </td>
                                                     <td>Minggu Ke-<?php echo $komoditas->data_minggu ?></td>
                                                     <td><?php echo $komoditas->jml_produksi_minggu ?> Kg</td>
                                                     <td><?php echo round($komoditas->jml_produksi_minggu / 7)  ?> Kg
