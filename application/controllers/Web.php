@@ -46,13 +46,56 @@ class Web extends CI_Controller
 
 	public function komoditas()
 	{
+		if($this->input->is_ajax_request()){
+			$this->load->helper('debug');
+			$komoditas = $this->input->get('komoditas');
+			$sumber_data = $this->input->get('sumber_data');
+			$kelompok = $this->input->get('kelompok');
+			$bulan_tahun = $this->input->get('bulan_tahun');
+			$minggu = $this->input->get('minggu');
+			$where = [];
+			$like = false;
+
+			if(!empty($komoditas)){
+				$where['produk.produk_id'] = $komoditas;
+			}
+
+			if(!empty($sumber_data)){
+				$where['user_dinas.dinas_id'] = $sumber_data;
+			}
+
+			if(!empty($bulan_tahun)){
+				$where['komoditas.bulan_tahun'] = $bulan_tahun;
+			}
+
+			if(!empty($minggu)){
+				$where['komoditas.data_minggu'] = $minggu;
+			}
+
+			if(!empty($kelompok)){
+				$like = $kelompok;
+			}
+
+			pJson($this->Komoditas_model->get_all($where, $like));
+		}
+
 		$kategori = $this->Kategori_model->get_all();
 		$setting = $this->Setting_website_model->get_by_id(1);
 		$komoditas = $this->Komoditas_model->get_all();
+
+		$fKomoditas = $this->db->get('produk')->result();
+		$fSumberData = $this->db->get('dinas')->result();
+		$fKelompok = $this->db->group_by('kelompok')->get('user_dinas')->result();
+
+
+
 		$data = array(
 			'kategori_data' => $kategori,
 			'setting' => $setting,
 			'komoditas_data' => $komoditas,
+			'fKomoditas' => $fKomoditas,
+			'fSumberData' => $fSumberData,
+			'fKelompok' => $fKelompok,
 		);
 		$this->template->load('template_web', 'web/komoditas', $data);
 	}
@@ -145,5 +188,53 @@ class Web extends CI_Controller
 				'url' => base_url('temp/img/' . $data['file_name'])
 			]);
 		}
+	}
+
+	public function all_informasi ()
+	{
+		$data['kategori_data'] = $this->Kategori_model->get_all();
+		$data['setting'] = $this->Setting_website_model->get_by_id(1);
+		$data['page'] = $this->input->get('page') ?? 1;
+		$data['per_page'] = 6;
+		$data['informasi'] = $this->Informasi_model->get_all($data['per_page'], false,  $data['per_page'] * ($data['page'] - 1));
+		$data['total_halaman'] = ceil($this->db->get('informasi')->num_rows() / $data['per_page']);
+
+		
+		$this->template->load('template_web', 'web/all_informasi', $data);
+	}
+	public function export_komoditas ()
+	{
+		$this->load->library('excel');
+		$komoditas = $this->input->get('komoditas');
+		$sumber_data = $this->input->get('sumber_data');
+		$kelompok = $this->input->get('kelompok');
+		$bulan_tahun = $this->input->get('bulan_tahun');
+		$minggu = $this->input->get('minggu');
+		$where = [];
+		$like = false;
+
+		if (!empty($komoditas)) {
+			$where['produk.produk_id'] = $komoditas;
+		}
+
+		if (!empty($sumber_data)) {
+			$where['user_dinas.dinas_id'] = $sumber_data;
+		}
+
+		if (!empty($bulan_tahun)) {
+			$where['komoditas.bulan_tahun'] = $bulan_tahun;
+		}
+
+		if (!empty($minggu)) {
+			$where['komoditas.data_minggu'] = $minggu;
+		}
+
+		if (!empty($kelompok)) {
+			$like = $kelompok;
+		}
+
+		$data = $this->Komoditas_model->get_all($where, $like);
+		$this->excel->export($data);
+		
 	}
 }

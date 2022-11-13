@@ -16,13 +16,13 @@ class Informasi_model extends CI_Model
     }
 
     // get all
-    function get_all($limit = false, $where = false)
+    function get_all($limit = false, $where = false, $offset = 0)
     {
 		$this->db->join('kategori', 'kategori.kategori_id = informasi.kategori_id', 'left');
 		$this->db->join('user_dinas', 'user_dinas.user_dinas_id = informasi.author', 'left');
         $this->db->order_by($this->id, $this->order);
         if($limit){
-            $this->db->limit($limit);
+            $this->db->limit($limit, $offset);
         }
         if($where){
             $this->db->where($where);

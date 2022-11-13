@@ -21,10 +21,11 @@
                     <div class="col-lg-3 col-md-3" style="margin-top: 2px;">
                         <div class="form-group">
                             <label for=""> <b>Filter By Komoditas</b> </label>
-                            <select class="" aria-label="Default select example">
-                                <option value="1">All</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                            <select class="" aria-label="Default select example" id="komoditas">
+                                <option value="">All</option>
+                                <?php foreach ($fKomoditas as $v) : ?>
+                                    <option value="<?= $v->produk_id ?>"><?= $v->nama_produk ?></option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                     </div>
@@ -32,36 +33,36 @@
                     <div class="col-lg-2 col-md-2" style="margin-top: 2px;">
                         <div class="form-group">
                             <label for=""> <b>Sumber Data</b> </label>
-                            <select class="" aria-label="Default select example">
-                                <option value="1">All</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                            <select class="" aria-label="Default select example" id="sumber_data">
+                                <option value="">All</option>
+                                <?php foreach ($fSumberData as $s) : ?>
+                                    <option value="<?= $s->dinas_id ?>"><?= $s->nama_dinas  ?></option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                     </div>
                     <div class="col-lg-2 col-md-2" style="margin-top: 2px;">
                         <div class="form-group">
                             <label for=""> <b>Kelompok/Agent</b> </label>
-                            <select class="" aria-label="Default select example">
-                                <option value="1">All</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                            <select class="" aria-label="Default select example" id="kelompok">
+                                <option value="">All</option>
+                                <?php foreach ($fKelompok as $k) : ?>
+                                    <option value="<?= $k->kelompok ?>"><?= $k->kelompok ?></option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                     </div>
                     <div class="col-lg-2 col-md-2" style="margin-top: 2px;">
                         <div class="form-group">
-
                             <label for=""> <b>Bulan & Tahun</b> </label>
-                            <input type="month" class="form-control">
-
+                            <input type="month" class="form-control" id="bulan_tahun">
                         </div>
                     </div>
                     <div class="col-lg-2 col-md-2" style="margin-top: 2px;">
                         <div class="form-group">
                             <label for=""> <b>Minggu Ke</b> </label>
-                            <select class="" aria-label="Default select example">
-                                <option value="1">All</option>
+                            <select class="" aria-label="Default select example" id="minggu">
+                                <option value="">All</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -73,12 +74,12 @@
                         <div class="form-group">
                             <label for=""> <b>
                                 </b> </label><br>
-                            <button class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i>
+                            <button class="btn btn-primary" id="filter-btn"><i class="fa fa-search" aria-hidden="true"></i>
                                 Filter</button>
                         </div>
                     </div>
                 </div><br>
-                <button class="btn btn-success"> <i class="fa fa-file-excel-o" aria-hidden="true"></i> Download
+                <button id="exportExcel" class="btn btn-success"> <i class="fa fa-file-excel-o" aria-hidden="true"></i> Download
                     Excel</button> <br><br>
                 <div class="box-body" style="overflow-x: scroll; ">
                     <table id="example" class="display" style="width:100%">
@@ -100,12 +101,9 @@
                                 <th>Harga Pedagang</th>
                             </tr>
                         </thead>
-                        <tbody><?php $no = 1;
-            foreach ($komoditas_data as $komoditas)
-            {
-                ?>
-                            <tr>
-                                <td><?= $no++?></td>
+                        <tbody>
+                            <!-- <tr>
+                                <td><?= $no++ ?></td>
                                 <td><?php echo $komoditas->tgl_update ?></td>
                                 <td><?php echo $komoditas->nama_produk ?></td>
                                 <td><?php echo $komoditas->username ?></td>
@@ -117,19 +115,18 @@
                                 <td><?php echo $komoditas->jml_produksi_minggu ?> Kg</td>
                                 <td><?php echo round($komoditas->jml_produksi_minggu / 7)  ?> Kg
                                 </td>
-                                <td><?php echo rupiah($komoditas->harga_dari_produsen * $komoditas->jml_produksi_minggu )  ?>
+                                <td data-native="<?= $komoditas->harga_dari_produsen * $komoditas->jml_produksi_minggu ?>"><?php echo rupiah($komoditas->harga_dari_produsen * $komoditas->jml_produksi_minggu)  ?>
                                 </td>
                                 <td><?php echo rupiah($komoditas->harga_dari_produsen)  ?></td>
 
 
-                                <?php if($komoditas->harga_pedagang ==null){ ?>
+                                <?php if ($komoditas->harga_pedagang == null) { ?>
                                 <td>-</td>
-                                <?php }else{ ?>
+                                <?php } else { ?>
                                 <td><?php echo rupiah($komoditas->harga_pedagang)  ?></td>
                                 <?php } ?>
                                 </td>
-                            </tr>
-                            <?php } ?>
+                            </tr> -->
                         </tbody>
                         <tfoot>
                             <tr>
