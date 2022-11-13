@@ -17,7 +17,6 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="row">
-<<<<<<< HEAD
                             <?php if (empty($informasi)) : ?>
                                 <div class="text-center">Belum ada informasi</div>
                             <?php else : ?>
@@ -30,20 +29,6 @@
                                                 </a>
                                             </div>
                                             <?php
-=======
-                            <?php if(empty($informasi)) : ?>
-                            <div class="text-center">Belum ada informasi</div>
-                            <?php else: ?>
-                            <?php foreach ($informasi as $row) : ?>
-                            <div class="col-lg-4">
-                                <div class="single-business-news">
-                                    <div class="business-news-image">
-                                        <a href="<?= site_url('/web/informasi/' . $row->informasi_id) ?>">
-                                            <img src="<?= base_url() ?>temp/img/<?= $row->thumbnail ?>" alt="image">
-                                        </a>
-                                    </div>
-                                    <?php
->>>>>>> edf81cfbf7783173c95d2c7798ab6980bc36f66e
                                             $tanggal = date_create($row->tanggal);
                                             $tanggal = date_format($tanggal, 'd M, Y');
                                             ?>
