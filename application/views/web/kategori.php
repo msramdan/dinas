@@ -17,9 +17,9 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="row">
-                            <?php if(empty($informasi)) : ?>
+                            <?php if (empty($informasi)) : ?>
                                 <div class="text-center">Belum ada informasi</div>
-                            <?php else: ?>
+                            <?php else : ?>
                                 <?php foreach ($informasi as $row) : ?>
                                     <div class="col-lg-4">
                                         <div class="single-business-news">
@@ -46,13 +46,13 @@
                         </div>
 
 
-                        <?php if(!empty($informasi)) : ?>
+                        <?php if (!empty($informasi)) : ?>
                             <div class="pagination-area">
                                 <a href="<?= current_url() . '?page=' . $page - 1 ?>" class="prev page-numbers <?= $page == 1 ? 'disabled-link' : '' ?>">
                                     <i class='bx bx-chevron-left'></i>
                                 </a>
                                 <?php for ($i = 1; $i <= $total_halaman; $i++) : ?>
-                                    <a href="" class="page-numbers <?= $i == $page ? 'current' : '' ?>"><?= $i ?></a>
+                                    <a href="<?= current_url() . '?page=' . $i ?>" class="page-numbers <?= $i == $page ? 'current' : '' ?>"><?= $i ?></a>
                                     <!-- <span class="page-numbers current" aria-current="page">2</span>
                                     <a href="#" class="page-numbers">3</a>
                                     <a href="#" class="page-numbers">4</a> -->
