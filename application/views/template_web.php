@@ -34,18 +34,18 @@
     <link href="<?= base_url() ?>temp/assets/css/splide.min.css" rel="stylesheet" />
     <script src="<?= base_url() ?>temp/assets/js/splide.min.js"></script>
     <style>
-        .splide__slide img {
-            width: 100%;
-            height: auto;
-        }
+    .splide__slide img {
+        width: 100%;
+        height: auto;
+    }
 
-        .disabled-link {
-            pointer-events: none;
-        }
+    .disabled-link {
+        pointer-events: none;
+    }
 
-        .disabled-link:hover {
-            cursor: no-drop;
-        }
+    .disabled-link:hover {
+        cursor: no-drop;
+    }
     </style>
 </head>
 
@@ -72,8 +72,10 @@
                 <div class="main-responsive-menu">
                     <div class="logo">
                         <a href="<?= base_url() ?>">
-                            <img src="<?= base_url() ?>temp/img/<?= $setting->logo_light ?>" class="black-logo" alt="image" width="75">
-                            <img src="<?= base_url() ?>temp/frontend/assets/img/<?= $setting->logo_dark ?>" class="white-logo" alt="image" width="75">
+                            <img src="<?= base_url() ?>temp/img/<?= $setting->logo_light ?>" class="black-logo"
+                                alt="image" width="170">
+                            <img src="<?= base_url() ?>temp/frontend/assets/img/<?= $setting->logo_dark ?>"
+                                class="white-logo" alt="image" width="170">
                         </a>
                     </div>
                 </div>
@@ -84,8 +86,10 @@
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light">
                     <a class="navbar-brand" href="<?= base_url() ?>">
-                        <img src="<?= base_url() ?>temp/img/<?= $setting->logo_light ?>" class="black-logo" alt="image" width="75">
-                        <img src="<?= base_url() ?>temp/img/<?= $setting->logo_dark ?>" class="white-logo" alt="image" width="75">
+                        <img src="<?= base_url() ?>temp/img/<?= $setting->logo_light ?>" class="black-logo" alt="image"
+                            width="170">
+                        <img src="<?= base_url() ?>temp/img/<?= $setting->logo_dark ?>" class="white-logo" alt="image"
+                            width="170">
                     </a>
 
                     <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
@@ -103,11 +107,11 @@
                             </li>
 
                             <?php foreach ($kategori_data as $row) { ?>
-                                <li class="nav-item">
-                                    <a href="<?= base_url() ?>web/kategori/<?= $row->kategori_id ?>" class="nav-link">
-                                        <?= $row->nama_kategori ?>
-                                    </a>
-                                </li>
+                            <li class="nav-item">
+                                <a href="<?= base_url() ?>web/kategori/<?= $row->kategori_id ?>" class="nav-link">
+                                    <?= $row->nama_kategori ?>
+                                </a>
+                            </li>
                             <?php } ?>
 
                             <li class="nav-item">
@@ -151,28 +155,29 @@
                     <div class="single-footer-widget">
                         <h2>New Post</h2>
                         <?php foreach ($posts as $post) : ?>
-                            <?php
+                        <?php
                             $tanggal = date_create($post->tanggal);
                             $tanggal = date_format($tanggal, 'd M Y');
                             ?>
-                            <div class="post-content">
-                                <div class="row align-items-center">
-                                    <div class="col-md-4">
-                                        <div class="post-image">
-                                            <a href="<?= base_url('temp/img/' . $post->thumbnail) ?> ">
-                                                <img src="<?= base_url('temp/img/' . $post->thumbnail) ?>" alt="image">
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-8">
-                                        <h4>
-                                            <a href="<?= site_url('/web/informasi/' . $post->informasi_id) ?>"><?= $post->judul ?></a>
-                                        </h4>
-                                        <span><?= $tanggal ?></span>
+                        <div class="post-content">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <div class="post-image">
+                                        <a href="<?= base_url('temp/img/' . $post->thumbnail) ?> ">
+                                            <img src="<?= base_url('temp/img/' . $post->thumbnail) ?>" alt="image">
+                                        </a>
                                     </div>
                                 </div>
+
+                                <div class="col-md-8">
+                                    <h4>
+                                        <a
+                                            href="<?= site_url('/web/informasi/' . $post->informasi_id) ?>"><?= $post->judul ?></a>
+                                    </h4>
+                                    <span><?= $tanggal ?></span>
+                                </div>
                             </div>
+                        </div>
                         <?php endforeach; ?>
 
                     </div>
@@ -191,9 +196,10 @@
                             </li>
 
                             <?php foreach ($kategori_data as $row) { ?>
-                                <li>
-                                    <a href="<?= site_url('web/kategori/' . $row->kategori_id) ?>"> <?= $row->nama_kategori ?></a>
-                                </li>
+                            <li>
+                                <a href="<?= site_url('web/kategori/' . $row->kategori_id) ?>">
+                                    <?= $row->nama_kategori ?></a>
+                            </li>
                             <?php } ?>
 
                             <li>
@@ -239,7 +245,7 @@
             <div class="copyright-area-content">
                 <p>
                     Copyright © <script>
-                        document.write(new Date().getFullYear())
+                    document.write(new Date().getFullYear())
                     </script> <?= $setting->nama_website ?>
                 </p>
             </div>
@@ -279,10 +285,11 @@
     <sc ript src="<?= base_url() ?>temp/frontend/assets/js/wow.min.js"></sc>
     <!-- Custom JS -->
     <script src="<?= base_url() ?>temp/frontend/assets/js/main.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>temp/assets/js/sweetalert.min.js"></script>
+    <scri
+pt type="text/javascript" src="<?php echo base_url(); ?>temp/assets/js/sweetalert.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>temp/assets/js/sweetalert.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="<?= base_url(); ?>temp/assets/js/dataflash.js"></script>
 </body>
 
-</html>
+</html>l>

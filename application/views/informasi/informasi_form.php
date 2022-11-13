@@ -60,6 +60,7 @@
                                             placeholder="thumbnail" required="" value=""
                                             onchange="return validasiEkstensi()" />
                                         <!-- <div id="preview"></div> -->
+                                        <p style="color: red;">Note : Saran ukuran gambar 600px*500px</p>
                                     </td>
                                 </tr>
                                 <?php } else { ?>
@@ -72,6 +73,7 @@
                                                     style="width: 150px;height: 150px;border-radius: 5%;"></img></a>
                                             <input type="hidden" name="thumbnail_lama" value="<?= $thumbnail ?>">
                                             <p style="color: red">Note :Pilih thumbnail Jika Ingin Merubah thumbnail</p>
+                                            <p style="color: red;">Note : Saran ukuran gambar 600px*500px</p>
                                             <input type="file" class="form-control" name="thumbnail" id="thumbnail"
                                                 placeholder="thumbnail" value="" onchange="return validasiEkstensi()" />
                                             <!-- <div id="preview"></div> -->
@@ -99,5 +101,3 @@
         </div>
     </div>
 </div>
-
-
