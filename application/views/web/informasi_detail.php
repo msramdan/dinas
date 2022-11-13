@@ -1,7 +1,7 @@
 <div class="page-title-area">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-12 col-lg-11">
+            <div class="col-10">
                 <div class="page-title-content">
                     <h2><?= $post->nama_kategori ?></h2>
                     <ul>
@@ -17,9 +17,9 @@
 <section class="contact-area ptb-50">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-12 col-xl-11">
+            <div class="col-10">
                 <h1><?= $post->judul ?></h1>
-                <p>
+                <p style="text-align: justify;">
                     <?= $post->deskripsi ?>
                 </p>
                 <div>

@@ -13,6 +13,7 @@ class Web extends CI_Controller
 		$this->load->model('Informasi_model');
 		$this->load->model('Kontak_model');
 		$this->load->model('Banner_model');
+		$this->load->model('Komoditas_model');
 	}
 
 	public function index()
@@ -47,9 +48,11 @@ class Web extends CI_Controller
 	{
 		$kategori = $this->Kategori_model->get_all();
 		$setting = $this->Setting_website_model->get_by_id(1);
+		$komoditas = $this->Komoditas_model->get_all();
 		$data = array(
 			'kategori_data' => $kategori,
 			'setting' => $setting,
+			'komoditas_data' => $komoditas,
 		);
 		$this->template->load('template_web', 'web/komoditas', $data);
 	}
