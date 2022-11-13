@@ -17,7 +17,7 @@ class Web extends CI_Controller
 
 	public function index()
 	{
-		$informasi= $this->Informasi_model->get_all();
+		$informasi= $this->Informasi_model->get_all(9, ['informasi.status' => 'publish']);
 		$kategori = $this->Kategori_model->get_all();
 		$banner = $this->Banner_model->get_all();
 		$setting = $this->Setting_website_model->get_by_id(1);
@@ -58,16 +58,22 @@ class Web extends CI_Controller
 	{
 		$page = $this->input->get('page') ?? 1;
 		$per_page = 6;
-		$kategori = $this->Kategori_model->get_all();
+		$kategori_data = $this->Kategori_model->get_all();
+		$kategori = $this->Kategori_model->get_by_id($id);
 		$setting = $this->Setting_website_model->get_by_id(1);
 		$informasi = $this->Kategori_model->getInformasi($id, $per_page, $per_page * ($page - 1) );
+		$where = [
+			'status' => 'publish',
+			'kategori_id' => $id
+		];
 
 		$data = array(
-			'kategori_data' => $kategori,
+			'kategori_data' => $kategori_data,
+			'kategori' => $kategori,
 			'setting' => $setting,
 			'page' => $page,
 			'per_page' => $per_page,
-			'total_halaman' => ceil($this->db->where('kategori_id', $id)->get('informasi')->num_rows() / $per_page),
+			'total_halaman' => ceil($this->db->where($where)->get('informasi')->num_rows() / $per_page),
 			'informasi' => $informasi
 		);
 
@@ -111,7 +117,7 @@ class Web extends CI_Controller
 		$this->db->join('kategori', 'kategori.kategori_id = informasi.kategori_id', 'left');
 		$this->db->join('user_dinas', 'user_dinas.user_dinas_id = informasi.author', 'left');
 
-		$data['post'] = $this->db->get_where('informasi', ['informasi_id' => $id_informasi])->row();
+		$data['post'] = $this->db->get_where('informasi', ['informasi_id' => $id_informasi, 'status' => 'publish'])->row();
 		$data['kategori_data'] = $this->Kategori_model->get_all();
 		$data['setting'] = $this->Setting_website_model->get_by_id(1);
 

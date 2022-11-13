@@ -69,6 +69,7 @@ class Kategori_model extends CI_Model
             ->join('informasi', 'informasi.kategori_id = kategori.kategori_id', 'left')
             ->join('user_dinas', 'user_dinas.user_dinas_id = informasi.author', 'left')
             ->where('kategori.kategori_id', $kategori_id)
+            ->where('informasi.status', 'publish')
             ->limit($limit, $offset)
             ->get($this->table)
             ->result();

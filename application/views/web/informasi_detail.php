@@ -1,22 +1,23 @@
-<!-- Start Page Banner -->
 <div class="page-title-area">
     <div class="container">
-        <div class="page-title-content">
-            <h2><?= $post->nama_kategori ?></h2>
-            <ul>
-                <li><a href="<?= base_url() ?>">Home</a></li>
-                <li>Post</li>
-            </ul>
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-11">
+                <div class="page-title-content">
+                    <h2><?= $post->nama_kategori ?></h2>
+                    <ul>
+                        <li><a href="<?= base_url() ?>">Home</a></li>
+                        <li>Post</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<!-- End Page Banner -->
 
-<!-- Start Contact Area -->
 <section class="contact-area ptb-50">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
+        <div class="row justify-content-center">
+            <div class="col-12 col-xl-11">
                 <h1><?= $post->judul ?></h1>
                 <p>
                     <?= $post->deskripsi ?>
@@ -36,4 +37,3 @@
         </div>
     </div>
 </section>
-<!-- End Contact Area -->
