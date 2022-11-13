@@ -24,7 +24,7 @@
                             <select class="" aria-label="Default select example" id="komoditas">
                                 <option value="">All</option>
                                 <?php foreach ($fKomoditas as $v) : ?>
-                                    <option value="<?= $v->produk_id ?>"><?= $v->nama_produk ?></option>
+                                <option value="<?= $v->produk_id ?>"><?= $v->nama_produk ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -36,7 +36,7 @@
                             <select class="" aria-label="Default select example" id="sumber_data">
                                 <option value="">All</option>
                                 <?php foreach ($fSumberData as $s) : ?>
-                                    <option value="<?= $s->dinas_id ?>"><?= $s->nama_dinas  ?></option>
+                                <option value="<?= $s->dinas_id ?>"><?= $s->nama_dinas  ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -47,7 +47,7 @@
                             <select class="" aria-label="Default select example" id="kelompok">
                                 <option value="">All</option>
                                 <?php foreach ($fKelompok as $k) : ?>
-                                    <option value="<?= $k->kelompok ?>"><?= $k->kelompok ?></option>
+                                <option value="<?= $k->kelompok ?>"><?= $k->kelompok ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -74,12 +74,14 @@
                         <div class="form-group">
                             <label for=""> <b>
                                 </b> </label><br>
-                            <button class="btn btn-primary" id="filter-btn"><i class="fa fa-search" aria-hidden="true"></i>
+                            <button class="btn btn-primary" id="filter-btn"><i class="fa fa-search"
+                                    aria-hidden="true"></i>
                                 Filter</button>
                         </div>
                     </div>
                 </div><br>
-                <button id="exportExcel" class="btn btn-success"> <i class="fa fa-file-excel-o" aria-hidden="true"></i> Download
+                <button id="exportExcel" class="btn btn-success"> <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+                    Download
                     Excel</button> <br><br>
                 <div class="box-body" style="overflow-x: scroll; ">
                     <table id="example" class="display" style="width:100%">
@@ -88,7 +90,8 @@
                                 <th>No</th>
                                 <th>Tgl Update</th>
                                 <th>Produk</th>
-                                <th>Created By</th>
+                                <th>Sumber</th>
+                                <!-- <th>Kelompok</th> -->
                                 <th>Stok</th>
                                 <th>Rencana Produksi</th>
                                 <th>Ketahanan Bulanan</th>
@@ -134,7 +137,7 @@
                                 <th>10 Ton</th>
                                 <th>10 Ton</th>
                                 <th>10 Bulan</th>
-                                <th>10 Ton</th>
+                                <th></th>
                                 <th></th>
                                 <th>10 Ton</th>
                                 <th>10 Ton</th>
@@ -150,6 +153,4 @@
 
         </div>
     </div>
-
-
 </section>
