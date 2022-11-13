@@ -24,7 +24,7 @@
                                     <div class="col-lg-4">
                                         <div class="single-business-news">
                                             <div class="business-news-image">
-                                                <a href="#">
+                                                <a href="#<?= site_url('web/informasi/' . $row->informasi_id) ?>"><?= $row->judul ?>">
                                                     <img src="<?= base_url() ?>temp/img/<?= $row->thumbnail ?>" alt="image">
                                                 </a>
                                             </div>
@@ -32,19 +32,17 @@
                                             $tanggal = date_create($row->tanggal);
                                             $tanggal = date_format($tanggal, 'd M, Y');
                                             ?>
-                                    <div class="business-news-content">
-                                        <span><?= ucfirst($row->nama_kategori) ?></span>
-                                        <h3>
-                                            <a
-                                                href="<?= site_url('web/informasi/' . $row->informasi_id) ?>"><?= $row->judul ?></a>
-                                        </h3>
-                                        <p><a
-                                                href="<?= site_url('web/informasi/' . $row->informasi_id) ?>"><?= $row->username ?></a>
-                                            / <?= $tanggal ?></p>
+                                            <div class="business-news-content">
+                                                <span><?= ucfirst($row->nama_kategori) ?></span>
+                                                <h3>
+                                                    <a href="<?= site_url('web/informasi/' . $row->informasi_id) ?>"><?= $row->judul ?></a>
+                                                </h3>
+                                                <p><a href="<?= site_url('web/informasi/' . $row->informasi_id) ?>"><?= $row->username ?></a>
+                                                    / <?= $tanggal ?></p>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <?php endforeach; ?>
+                                <?php endforeach; ?>
                             <?php endif; ?>
                         </div>
 
@@ -59,12 +57,11 @@
                                     <!-- <span class="page-numbers current" aria-current="page">2</span>
                                     <a href="#" class="page-numbers">3</a>
                                     <a href="#" class="page-numbers">4</a> -->
-                            <?php endfor; ?>
-                            <a href="<?= current_url() . '?page=' . $page + 1 ?>"
-                                class="next page-numbers <?= $page == $total_halaman ? 'disabled-link' : '' ?>">
-                                <i class='bx bx-chevron-right'></i>
-                            </a>
-                        </div>
+                                <?php endfor; ?>
+                                <a href="<?= current_url() . '?page=' . $page + 1 ?>" class="next page-numbers <?= $page == $total_halaman ? 'disabled-link' : '' ?>">
+                                    <i class='bx bx-chevron-right'></i>
+                                </a>
+                            </div>
                         <?php endif; ?>
                     </div>
 
