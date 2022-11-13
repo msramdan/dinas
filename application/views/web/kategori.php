@@ -24,7 +24,7 @@
                                     <div class="col-lg-4">
                                         <div class="single-business-news">
                                             <div class="business-news-image">
-                                                <a href="#<?= site_url('web/informasi/' . $row->informasi_id) ?>"><?= $row->judul ?>">
+                                                <a href="<?= site_url('web/informasi/' . $row->informasi_id) ?>"><?= $row->judul ?>">
                                                     <img src="<?= base_url() ?>temp/img/<?= $row->thumbnail ?>" alt="image">
                                                 </a>
                                             </div>
