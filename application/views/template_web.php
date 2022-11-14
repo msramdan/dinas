@@ -368,7 +368,7 @@
                         {
                             data: 'jml_produksi_minggu',
                             render: function(data, type, row, meta) {
-                                return Math.round(data / 7) + ' Kg'
+                                return (data / 7).toFixed(2) + ' Kg'
                             }
                         },
                         {
@@ -466,8 +466,8 @@
 
 
                         $(api.column(0).footer()).html('Total');
-                        $(api.column(4).footer()).html(stok + ' Ton');
-                        $(api.column(5).footer()).html(rencanaProduksi + ' Ton');
+                        $(api.column(4).footer()).html(stok.toFixed(2) + ' Ton');
+                        $(api.column(5).footer()).html(rencanaProduksi.toFixed(2) + ' Ton');
                         $(api.column(6).footer()).html(ketahananBulanan + ' Bulan');
                         $(api.column(9).footer()).html(Math.round(produksiMingguan) + ' KG');
                         $(api.column(10).footer()).html(Math.round(produksiMingguan / 7) + ' KG');
