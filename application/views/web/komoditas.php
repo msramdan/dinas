@@ -91,7 +91,7 @@
                                 <th>Tgl Update</th>
                                 <th>Produk</th>
                                 <th>Sumber</th>
-                                <!-- <th>Kelompok</th> -->
+                                <th>Kelompok</th>
                                 <th>Stok</th>
                                 <th>Rencana Produksi</th>
                                 <th>Ketahanan Bulanan</th>
@@ -104,46 +104,20 @@
                                 <th>Harga Pedagang</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <!-- <tr>
-                                <td><?= $no++ ?></td>
-                                <td><?php echo $komoditas->tgl_update ?></td>
-                                <td><?php echo $komoditas->nama_produk ?></td>
-                                <td><?php echo $komoditas->username ?></td>
-                                <td><?php echo $komoditas->stok ?> Ton</td>
-                                <td><?php echo $komoditas->rencana_produksi ?> Ton</td>
-                                <td><?php echo $komoditas->ketahanan_bulanan ?> Bulan</td>
-                                <td><?php echo date('F Y', strtotime($komoditas->bulan_tahun));  ?> </td>
-                                <td>Minggu Ke-<?php echo $komoditas->data_minggu ?></td>
-                                <td><?php echo $komoditas->jml_produksi_minggu ?> Kg</td>
-                                <td><?php echo round($komoditas->jml_produksi_minggu / 7)  ?> Kg
-                                </td>
-                                <td data-native="<?= $komoditas->harga_dari_produsen * $komoditas->jml_produksi_minggu ?>"><?php echo rupiah($komoditas->harga_dari_produsen * $komoditas->jml_produksi_minggu)  ?>
-                                </td>
-                                <td><?php echo rupiah($komoditas->harga_dari_produsen)  ?></td>
-
-
-                                <?php if ($komoditas->harga_pedagang == null) { ?>
-                                <td>-</td>
-                                <?php } else { ?>
-                                <td><?php echo rupiah($komoditas->harga_pedagang)  ?></td>
-                                <?php } ?>
-                                </td>
-                            </tr> -->
-                        </tbody>
                         <tfoot>
                             <tr>
-                                <th colspan="4">Jumlah</th>
-                                <th>10 Ton</th>
-                                <th>10 Ton</th>
-                                <th>10 Bulan</th>
+                                <th colspan="4"></th>
                                 <th></th>
                                 <th></th>
-                                <th>10 Ton</th>
-                                <th>10 Ton</th>
-                                <th><?= rupiah(10000) ?></th>
-                                <th style="background-color: #ccccff"><?= rupiah(10000) ?></th>
-                                <th style="background-color: #ccccff"><?= rupiah(10000) ?></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th style="background-color: #ccccff"></th>
+                                <th style="background-color: #ccccff"></th>
                             </tr>
                         </tfoot>
                     </table>

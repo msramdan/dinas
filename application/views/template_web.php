@@ -352,6 +352,10 @@
 
                     },
                     {
+                        data: 'kelompok',
+
+                    },
+                    {
                         data: 'stok',
                         render: function(data, type, row, meta) {
                             return data + ' Ton';
@@ -430,42 +434,42 @@
                     };
                     const api = this.api();
                     const stok = api
-                        .column(4)
-                        .data()
-                        .reduce(function(a, b) {
-                            return intVal(a) + intVal(b);
-                        }, 0);
-
-                    const rencanaProduksi = api
                         .column(5)
                         .data()
                         .reduce(function(a, b) {
                             return intVal(a) + intVal(b);
                         }, 0);
 
-                    const ketahananBulanan = api
+                    const rencanaProduksi = api
                         .column(6)
                         .data()
                         .reduce(function(a, b) {
                             return intVal(a) + intVal(b);
                         }, 0);
 
-                    const produksiMingguan = api
-                        .column(9)
+                    const ketahananBulanan = api
+                        .column(7)
                         .data()
                         .reduce(function(a, b) {
                             return intVal(a) + intVal(b);
                         }, 0);
 
-                    const produksiHarian = api
+                    const produksiMingguan = api
                         .column(10)
                         .data()
                         .reduce(function(a, b) {
                             return intVal(a) + intVal(b);
                         }, 0);
 
-                    const hTotalProduksi = api
+                    const produksiHarian = api
                         .column(11)
+                        .data()
+                        .reduce(function(a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0);
+
+                    const hTotalProduksi = api
+                        .column(12)
                         .data()
                         .reduce(function(a, b) {
                             return price(a) + price(b.harga_dari_produsen * b
@@ -473,7 +477,7 @@
                         }, 0);
 
                     const hDariProdusen = api
-                        .column(12)
+                        .column(13)
                         .data()
                         .reduce(function(a, b) {
 
@@ -481,7 +485,7 @@
                         }, 0);
 
                     const hPedagang = api
-                        .column(13)
+                        .column(14)
                         .data()
                         .reduce(function(a, b) {
                             return price(a) + price(b);
@@ -489,16 +493,16 @@
 
 
                     $(api.column(0).footer()).html('Total');
-                    $(api.column(4).footer()).html(stok.toFixed(2) + ' Ton');
-                    $(api.column(5).footer()).html(rencanaProduksi.toFixed(2) + ' Ton');
-                    $(api.column(6).footer()).html(ketahananBulanan + ' Bulan');
-                    $(api.column(9).footer()).html(Math.round(produksiMingguan) + ' KG');
-                    $(api.column(10).footer()).html(Math.round(produksiMingguan / 7) + ' KG');
-                    $(api.column(11).footer()).html('Rp. ' + numeral(hTotalProduksi).format('0,0')
+                    $(api.column(5).footer()).html(stok.toFixed(2) + ' Ton');
+                    $(api.column(6).footer()).html(rencanaProduksi.toFixed(2) + ' Ton');
+                    $(api.column(7).footer()).html(ketahananBulanan + ' Bulan');
+                    $(api.column(10).footer()).html(Math.round(produksiMingguan) + ' KG');
+                    $(api.column(11).footer()).html(Math.round(produksiMingguan / 7) + ' KG');
+                    $(api.column(12).footer()).html('Rp. ' + numeral(hTotalProduksi).format('0,0')
                         .replace(/[,]/gm, '.') + ',00');
-                    $(api.column(12).footer()).html('Rp. ' + numeral(hDariProdusen / api.data()
+                    $(api.column(13).footer()).html('Rp. ' + numeral(hDariProdusen / api.data()
                         .count()).format('0,0').replace(/[,]/gm, '.') + ',00');
-                    $(api.column(13).footer()).html('Rp. ' + numeral(hPedagang / api.data().count())
+                    $(api.column(14).footer()).html('Rp. ' + numeral(hPedagang / api.data().count())
                         .format('0,0').replace(/[,]/gm, '.') + ',00');
                 }
             });
