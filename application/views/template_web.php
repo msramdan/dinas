@@ -156,7 +156,7 @@
                 </div>
 
                 <?php
-                $posts = $this->db->order_by('tanggal', 'ASC')->limit(2)->get('informasi')->result();
+                $posts = $this->db->order_by('informasi_id', 'DESC')->limit(2)->get('informasi')->result();
                 ?>
                 <div class="col-lg-3 col-md-6">
                     <div class="single-footer-widget">
