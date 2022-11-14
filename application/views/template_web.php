@@ -310,7 +310,8 @@
                             d.minggu = $('#minggu').val();
                         }
                     },
-                    columns: [{
+                    columns: [
+                        {
                             data: null,
                             render: function(data, type, row, meta) {
                                 return meta.row + 1;
@@ -325,7 +326,7 @@
 
                         },
                         {
-                            data: 'nama_dinas',
+                            data: 'username',
 
                         },
                         {
@@ -353,92 +354,38 @@
                             }
                         },
                         {
-                            render: function(data, type, row, meta) {
-                                return 'Minggu ke-' + data
-                            }
-                        },
-                        {
-                            data: 'jml_produksi_minggu',
-                            render: function(data, type, row, meta) {
-                                return data + ' Kg'
-                            }
-                        },
-                        {
-                            data: 'jml_produksi_minggu',
-                            render: function(data, type, row, meta) {
-                                return (data / 7) + ' Kg'
-                            }
-                        },
-                        {
-                            data: null,
-                            render: function(data, type, row, meta) {
-                                return `Rp ${numeral(row.harga_dari_produsen * row.jml_produksi_minggu).format('0,0').replace(/[,]/gm, '.') },00`
-                            }
-                        },
-                        {
-                            data: 'harga_dari_produsen',
-                            render: function(data, type, row, meta) {
-                                return `Rp ${numeral(data).format('0,0').replace(/[,]/gm, '.') },00`
-                            }
-                        },
-                        {
-                            data: 'harga_pedagang',
-                            render: function(data, type, row, meta) {
-                                if (!data) return '-';
-                            }
-                        },
-                        {
-                            data: 'stok',
-                            render: function(data, dataType, row) {
-                                return data + ' Ton';
-                            }
-                        },
-                        {
-                            data: 'rencana_produksi',
-                            render: function(data, dataType, row) {
-                                return data + ' Ton';
-                            }
-                        },
-                        {
-                            data: 'ketahanan_bulanan',
-                            render: function(data, dataType, row) {
-                                return data + ' Bulan';
-                            }
-                        },
-                        {
-                            data: 'bulan_tahun',
                             data: 'data_minggu',
-                            render: function(data, dataType, row) {
+                            render: function(data, type, row, meta) {
                                 return 'Minggu ke-' + data
                             }
                         },
                         {
                             data: 'jml_produksi_minggu',
-                            render: function(data, dataType, row) {
+                            render: function(data, type, row, meta) {
                                 return data + ' Kg'
                             }
                         },
                         {
                             data: 'jml_produksi_minggu',
-                            render: function(data, dataType, row) {
+                            render: function(data, type, row, meta) {
                                 return (data / 7) + ' Kg'
                             }
                         },
                         {
                             data: null,
-                            render: function(data, dataType, row) {
+                            render: function(data, type, row, meta) {
                                 return `Rp ${numeral(row.harga_dari_produsen * row.jml_produksi_minggu).format('0,0').replace(/[,]/gm, '.') },00`
                             }
                         },
                         {
                             data: 'harga_dari_produsen',
-                            render: function(data, dataType, row) {
+                            render: function(data, type, row, meta) {
                                 return `Rp ${numeral(data).format('0,0').replace(/[,]/gm, '.') },00`
                             }
                         },
                         {
                             data: 'harga_pedagang',
-                            render: function(data, dataType, row) {
+                            render: function(data, type, row, meta) {
                                 if (!data) return '-';
 
                                 return `Rp ${numeral(data).format('0,0').replace(/[,]/gm, '.') },00`
@@ -499,8 +446,7 @@
                             .column(11)
                             .data()
                             .reduce(function(a, b) {
-                                return price(a) + price(b.harga_dari_produsen * b
-                                    .jml_produksi_minggu);
+                                return price(a) + price(b.harga_dari_produsen * b.jml_produksi_minggu);
                             }, 0);
 
                         const hDariProdusen = api
@@ -530,18 +476,18 @@
                         $(api.column(13).footer()).html('Rp. ' + numeral(hPedagang / api.data().count()).format('0,0').replace(/[,]/gm, '.') + ',00');
                     }
                 });
-            })
 
-            $(document).on('click', '#filter-btn', function() {
-                table.ajax.reload(function() {
-                    console.log('reload')
-                });
-            })
+                $(document).on('click', '#filter-btn', function() {
+                    table.ajax.reload(function() {
+                        console.log('reload')
+                    });
+                })
 
-            $('#exportExcel').click(function() {
-                window.location.href = `<?= site_url('web/export_komoditas') ?>?komoditas=${$('#komoditas').val()}&sumber_data=${$('#sumber_data').val()}&kelompok=${$('#kelompok').val()}&bulan_tahun=${$('#bulan_tahun').val()}&minggu=${$('#minggu').val()}`
-            })
+                $('#exportExcel').click(function() {
+                    window.location.href = `<?= site_url('web/export_komoditas') ?>?komoditas=${$('#komoditas').val()}&sumber_data=${$('#sumber_data').val()}&kelompok=${$('#kelompok').val()}&bulan_tahun=${$('#bulan_tahun').val()}&minggu=${$('#minggu').val()}`
+                })
 
+            });
         </script>
 </body>
 
