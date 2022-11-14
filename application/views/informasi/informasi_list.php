@@ -55,7 +55,7 @@
                                                     <td><?= $no++?></td>
                                                     <td><?php echo $informasi->judul ?></td>
                                                     <td><?php echo $informasi->nama_kategori ?></td>
-                                                    <td><?php echo $informasi->deskripsi ?></td>
+                                                    <td><?php echo substr($informasi->deskripsi,0,100)  ?></td>
                                                     <td><?php echo $informasi->username ?></td>
                                                     <td><?php echo $informasi->tanggal ?></td>
                                                     <td>

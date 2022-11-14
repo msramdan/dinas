@@ -162,7 +162,6 @@ class Web extends CI_Controller
 	{
 		$this->db->join('kategori', 'kategori.kategori_id = informasi.kategori_id', 'left');
 		$this->db->join('user_dinas', 'user_dinas.user_dinas_id = informasi.author', 'left');
-
 		$data['post'] = $this->db->get_where('informasi', ['informasi_id' => $id_informasi, 'status' => 'publish'])->row();
 		$data['kategori_data'] = $this->Kategori_model->get_all();
 		$data['setting'] = $this->Setting_website_model->get_by_id(1);
@@ -196,7 +195,7 @@ class Web extends CI_Controller
 		$data['setting'] = $this->Setting_website_model->get_by_id(1);
 		$data['page'] = $this->input->get('page') ?? 1;
 		$data['per_page'] = 6;
-		$data['informasi'] = $this->Informasi_model->get_all($data['per_page'], false,  $data['per_page'] * ($data['page'] - 1));
+		$data['informasi'] = $this->Informasi_model->get_all_publish($data['per_page'], false,  $data['per_page'] * ($data['page'] - 1));
 		$data['total_halaman'] = ceil($this->db->get('informasi')->num_rows() / $data['per_page']);
 
 		
