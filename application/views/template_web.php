@@ -297,7 +297,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
         <script>
             $(document).ready(function() {
-                let i = 0;
                 const table = $('#example').DataTable({
                     ajax: {
                         url: `<?= site_url('/web/komoditas') ?>`,
@@ -311,11 +310,11 @@
                             d.minggu = $('#minggu').val();
                         }
                     },
-                    columns: [{
+                    columns: [
+                        {
                             data: null,
-                            render: function() {
-                                i++
-                                return i;
+                            render: function(data, type, row, meta) {
+                                return meta.row + 1;
                             }
                         },
                         {
@@ -332,61 +331,61 @@
                         },
                         {
                             data: 'stok',
-                            render: function(data, dataType, row) {
+                            render: function(data, type, row, meta) {
                                 return data + ' Ton';
                             }
                         },
                         {
                             data: 'rencana_produksi',
-                            render: function(data, dataType, row) {
+                            render: function(data, type, row, meta) {
                                 return data + ' Ton';
                             }
                         },
                         {
                             data: 'ketahanan_bulanan',
-                            render: function(data, dataType, row) {
+                            render: function(data, type, row, meta) {
                                 return data + ' Bulan';
                             }
                         },
                         {
                             data: 'bulan_tahun',
-                            render: function(data, dataType, row) {
+                            render: function(data, type, row, meta) {
                                 return moment(data).format('MMMM YYYY')
                             }
                         },
                         {
                             data: 'data_minggu',
-                            render: function(data, dataType, row) {
+                            render: function(data, type, row, meta) {
                                 return 'Minggu ke-' + data
                             }
                         },
                         {
                             data: 'jml_produksi_minggu',
-                            render: function(data, dataType, row) {
+                            render: function(data, type, row, meta) {
                                 return data + ' Kg'
                             }
                         },
                         {
                             data: 'jml_produksi_minggu',
-                            render: function(data, dataType, row) {
+                            render: function(data, type, row, meta) {
                                 return (data / 7) + ' Kg'
                             }
                         },
                         {
                             data: null,
-                            render: function(data, dataType, row) {
+                            render: function(data, type, row, meta) {
                                 return `Rp ${numeral(row.harga_dari_produsen * row.jml_produksi_minggu).format('0,0').replace(/[,]/gm, '.') },00`
                             }
                         },
                         {
                             data: 'harga_dari_produsen',
-                            render: function(data, dataType, row) {
+                            render: function(data, type, row, meta) {
                                 return `Rp ${numeral(data).format('0,0').replace(/[,]/gm, '.') },00`
                             }
                         },
                         {
                             data: 'harga_pedagang',
-                            render: function(data, dataType, row) {
+                            render: function(data, type, row, meta) {
                                 if (!data) return '-';
 
                                 return `Rp ${numeral(data).format('0,0').replace(/[,]/gm, '.') },00`
@@ -472,11 +471,10 @@
                         $(api.column(6).footer()).html(ketahananBulanan + ' Bulan');
                         $(api.column(9).footer()).html(produksiMingguan + ' KG');
                         $(api.column(10).footer()).html(produksiHarian + ' KG');
-                        $(api.column(11).footer()).html('Rp. ' + numeral(hTotalProduksi).format('0,0').replace(/[,]/gm, '.') + ',00');
-                        $(api.column(12).footer()).html('Rp. ' + numeral(hDariProdusen).format('0,0').replace(/[,]/gm, '.') + ',00');
-                        $(api.column(13).footer()).html('Rp. ' + numeral(hPedagang).format('0,0').replace(/[,]/gm, '.') + ',00');
+                        $(api.column(11).footer()).html('Rp. ' + numeral(hTotalProduksi / api.data().count()).format('0,0').replace(/[,]/gm, '.') + ',00');
+                        $(api.column(12).footer()).html('Rp. ' + numeral(hDariProdusen / api.data().count()).format('0,0').replace(/[,]/gm, '.') + ',00');
+                        $(api.column(13).footer()).html('Rp. ' + numeral(hPedagang / api.data().count()).format('0,0').replace(/[,]/gm, '.') + ',00');
                     }
-
                 });
 
                 $(document).on('click', '#filter-btn', function() {
@@ -485,12 +483,8 @@
                     });
                 })
 
-                $('#exportExcel').click(function(){
-                    window.location.href = `<?= site_url('web/export_komoditas') ?>?komoditas=${$('#komoditas').val()}
-                    &sumber_data=${$('#sumber_data').val()}
-                    &kelompok=${$('#kelompok').val()}
-                    &bulan_tahun=${$('#bulan_tahun').val()}
-                    &minggu=${$('#minggu').val()}`
+                $('#exportExcel').click(function() {
+                    window.location.href = `<?= site_url('web/export_komoditas') ?>?komoditas=${$('#komoditas').val()}&sumber_data=${$('#sumber_data').val()}&kelompok=${$('#kelompok').val()}&bulan_tahun=${$('#bulan_tahun').val()}&minggu=${$('#minggu').val()}`
                 })
 
             });
