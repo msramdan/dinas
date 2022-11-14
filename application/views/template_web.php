@@ -29,24 +29,23 @@
     <link rel="stylesheet" href="<?= base_url() ?>temp/frontend/assets/css/responsive.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@2.3.1/dist/js/splide.min.js"></script>
 
     <title><?= $setting->nama_website ?></title>
 
     <link rel="icon" type="image/png" href="<?= base_url() ?>temp/frontend/assets/img/favicon.png">
-    <link href="<?= base_url() ?>temp/assets/css/splide.min.css" rel="stylesheet" />
-    <script src="<?= base_url() ?>temp/assets/js/splide.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@2.3.1/dist/css/splide.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <style>
-    .splide__slide img {
-        width: 100%;
-        height: auto;
+    .splide__optional-button-container {
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+        text-align: center;
     }
 
-    .disabled-link {
-        pointer-events: none;
-    }
-
-    .disabled-link:hover {
-        cursor: no-drop;
+    .splide__slide {
+        min-height: 200px;
+        text-align: center;
     }
     </style>
 </head>
@@ -523,6 +522,54 @@
             })
 
 
+        });
+        </script>
+
+        <script>
+        // SplideJS Slider. See full docs at:
+        // https://splidejs.com/
+        document.addEventListener('DOMContentLoaded', function() {
+            var splide = new Splide('#splide', {
+                type: 'loop',
+                perPage: 1,
+                autoplay: true,
+                interval: 3000, // How long to display each slide
+                pauseOnHover: false, // must be false
+                pauseOnFocus: false, // must be false
+                resetProgress: false
+            }).mount();
+
+            var button = document.querySelector('.splide__play-pause');
+
+            if (button) {
+                var pausedClass = 'is-paused';
+
+                // Remove the paused class and change the label to "Pause".
+                splide.on('autoplay:play', function() {
+                    button.classList.remove(pausedClass);
+                    button.textContent = 'Pause';
+                    button.setAttribute('aria-label', 'Pause Autoplay');
+                });
+
+                // Add the paused class and change the label to "Play".
+                splide.on('autoplay:pause', function() {
+                    button.classList.add(pausedClass);
+                    button.textContent = 'Play';
+                    button.setAttribute('aria-label', 'Start Autoplay');
+                });
+
+                // Toggle play/pause when the button is clicked.
+                splide.on('click', function() {
+                    var flag = 99;
+                    var Autoplay = splide.Components.Autoplay;
+
+                    if (button.classList.contains(pausedClass)) {
+                        Autoplay.play(flag);
+                    } else {
+                        Autoplay.pause(flag);
+                    }
+                }, button);
+            }
         });
         </script>
 </body>

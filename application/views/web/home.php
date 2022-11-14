@@ -2,12 +2,20 @@
     <div class="container">
         <div class="row">
             <section class="splide" aria-label="Splide Basic HTML Example">
-                <div class="splide__track">
-                    <ul class="splide__list">
-                        <?php foreach ($banner as $b) : ?>
-                        <li class="splide__slide"><img src="<?= $b->url ?>" alt="" class=""></li>
-                        <?php endforeach; ?>
-                    </ul>
+                <div id="splide">
+                    <!-- <div class="splide__progress">
+                        <div class="splide__progress__bar"></div>
+                    </div> -->
+                    <!-- <div class="splide__optional-button-container">
+                        <button class="splide__play-pause" aria-controls="splide-track">Pause</button>
+                    </div> -->
+                    <div class="splide__track" id="splide-track">
+                        <ul class="splide__list">
+                            <?php foreach ($banner as $b) : ?>
+                            <li class="splide__slide"><img src="<?= $b->url ?>" alt="" class=""></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
                 </div>
             </section>
         </div>
