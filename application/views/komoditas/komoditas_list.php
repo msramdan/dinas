@@ -19,7 +19,7 @@
                     </div>
                     <h4 class="panel-title">Data Komoditas</h4>
                 </div>
-                < class="panel-body">
+                <div class="panel-body">
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
@@ -107,5 +107,5 @@
                             </div>
                         </div>
                     </div>
-                </ div>
-            </div>
+                    </ div>
+                </div>

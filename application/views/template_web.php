@@ -302,6 +302,9 @@
             integrity="sha512-sMgx0iqtQVrEwuUPBeRZE42fOPWIRBRb3CLaoK5gilEnzKTkdJpjguVk5HpcmOgjyZlHSGqXXugNlaovRhYLsg=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+        <script
+            src='https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js'>
+        </script>
         <script>
         function convertDateDBtoIndo(string) {
             bulanIndo = ['', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September',
@@ -522,21 +525,8 @@
 
         });
         </script>
-
-        <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            new Splide('.splide', {
-                type: 'loop',
-                drag: 'free',
-                focus: 'center',
-                perPage: 3,
-                autoScroll: {
-                    speed: 1,
-                },
-            }).mount(window.splide.Extensions);
-        });
-        </script>
 </body>
+
 
 
 </html>
