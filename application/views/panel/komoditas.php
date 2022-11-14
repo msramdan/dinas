@@ -89,7 +89,7 @@
                                                 <tr>
                                                     <td><?= $no++?></td>
 
-                                                    <td><?php echo $komoditas->tgl_update ?></td>
+                                                    <td><?php echo date('d F Y', strtotime( $komoditas->tgl_update)) ?>
                                                     <td><?php echo $komoditas->nama_produk ?></td>
                                                     <td><?php echo $komoditas->username ?></td>
                                                     <td><?php echo $komoditas->stok ?> Ton</td>

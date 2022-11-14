@@ -19,7 +19,7 @@
                     </div>
                     <h4 class="panel-title">Data Komoditas</h4>
                 </div>
-                <div class="panel-body">
+                < class="panel-body">
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
@@ -60,7 +60,8 @@
                 ?>
                                                 <tr>
                                                     <td><?= $no++?></td>
-                                                    <td><?php echo $komoditas->tgl_update ?></td>
+                                                    <td><?php echo date('d F Y', strtotime( $komoditas->tgl_update)) ?>
+                                                    </td>
                                                     <td><?php echo $komoditas->nama_produk ?></td>
                                                     <td><?php echo $komoditas->username ?></td>
                                                     <td><?php echo $komoditas->stok ?> Ton</td>
@@ -106,5 +107,5 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </ div>
             </div>

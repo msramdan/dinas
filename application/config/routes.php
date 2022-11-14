@@ -51,6 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'web';
 $route['panel_admin'] = "auth";
+$route['list_dinas'] = "dinas";
 $route['panel_user'] = "panel/login";
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

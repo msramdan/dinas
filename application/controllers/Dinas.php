@@ -34,7 +34,7 @@ class Dinas extends CI_Controller
             $this->template->load('template','dinas/dinas_read', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
-            redirect(site_url('dinas'));
+            redirect(site_url('list_dinas'));
         }
     }
 
@@ -62,7 +62,7 @@ class Dinas extends CI_Controller
 
             $this->Dinas_model->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success');
-            redirect(site_url('dinas'));
+            redirect(site_url('list_dinas'));
         }
     }
     
@@ -80,7 +80,7 @@ class Dinas extends CI_Controller
             $this->template->load('template','dinas/dinas_form', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
-            redirect(site_url('dinas'));
+            redirect(site_url('list_dinas'));
         }
     }
     
@@ -97,7 +97,7 @@ class Dinas extends CI_Controller
 
             $this->Dinas_model->update($this->input->post('dinas_id', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success');
-            redirect(site_url('dinas'));
+            redirect(site_url('list_dinas'));
         }
     }
     
@@ -108,10 +108,10 @@ class Dinas extends CI_Controller
         if ($row) {
             $this->Dinas_model->delete(decrypt_url($id));
             $this->session->set_flashdata('message', 'Delete Record Success');
-            redirect(site_url('dinas'));
+            redirect(site_url('list_dinas'));
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
-            redirect(site_url('dinas'));
+            redirect(site_url('list_dinas'));
         }
     }
 

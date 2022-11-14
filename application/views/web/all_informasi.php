@@ -3,7 +3,7 @@
                 <div class="page-title-content">
                     <h2>Semua Informasi</h2>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="<?= base_url() ?>">Home</a></li>
                         <li>Informasi</li>
                         <li>All</li>
                     </ul>

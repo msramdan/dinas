@@ -13,7 +13,8 @@
 
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-    <link href="<?= base_url() ?>temp/assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
+    <link href="<?= base_url() ?>temp/assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css"
+        rel="stylesheet" />
     <link href="<?= base_url() ?>temp/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="<?= base_url() ?>temp/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
     <link href="<?= base_url() ?>temp/assets/css/animate.min.css" rel="stylesheet" />
@@ -23,15 +24,19 @@
     <!-- ================== END BASE CSS STYLE ================== -->
 
     <!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
-    <link href="<?= base_url() ?>temp/assets/plugins/DataTables/media/css/dataTables.bootstrap.min.css" rel="stylesheet" />
-    <link href="<?= base_url() ?>temp/assets/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css" rel="stylesheet" />
+    <link href="<?= base_url() ?>temp/assets/plugins/DataTables/media/css/dataTables.bootstrap.min.css"
+        rel="stylesheet" />
+    <link href="<?= base_url() ?>temp/assets/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css"
+        rel="stylesheet" />
     <!-- ================== END PAGE LEVEL STYLE ================== -->
 
     <!-- ================== BEGIN BASE JS ================== -->
     <script src="<?= base_url() ?>temp/assets/plugins/pace/pace.min.js"></script>
 
     <!-- ================== END BASE JS ================== -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote.min.css" integrity="sha512-m52YCZLrqQpQ+k+84rmWjrrkXAUrpl3HK0IO4/naRwp58pyr7rf5PO1DbI2/aFYwyeIH/8teS9HbLxVyGqDv/A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote.min.css"
+        integrity="sha512-m52YCZLrqQpQ+k+84rmWjrrkXAUrpl3HK0IO4/naRwp58pyr7rf5PO1DbI2/aFYwyeIH/8teS9HbLxVyGqDv/A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -43,15 +48,20 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     <h4 class="modal-title">Update Password</h4>
                 </div>
-                <form action="<?= base_url() ?>user/ganti_password/<?= $this->fungsi->user_login()->user_id  ?>" method="post" class="form">
+                <form action="<?= base_url() ?>user/ganti_password/<?= $this->fungsi->user_login()->user_id  ?>"
+                    method="post" class="form">
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Password</label>
-                            <input id="password" class="form-control" name="password" type="password" pattern="^\S{5,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Minimal 6 Karakter' : ''); if(this.checkValidity()) form.passcon.pattern = this.value;" required value="<?= set_value('password') ?>">
+                            <input id="password" class="form-control" name="password" type="password" pattern="^\S{5,}$"
+                                onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Minimal 6 Karakter' : ''); if(this.checkValidity()) form.passcon.pattern = this.value;"
+                                required value="<?= set_value('password') ?>">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Confirmasi Password</label>
-                            <input class="form-control" id="passcon" name="passcon" type="password" pattern="^\S{5,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Masukkan Password Yang Sama' : '');" required value="<?= set_value('passcon') ?>">
+                            <input class="form-control" id="passcon" name="passcon" type="password" pattern="^\S{5,}$"
+                                onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Masukkan Password Yang Sama' : '');"
+                                required value="<?= set_value('passcon') ?>">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -109,7 +119,8 @@
                 <ul class="nav">
                     <li class="nav-profile">
                         <div class="image">
-                            <a href="javascript:;"><img src="<?= base_url() ?>temp/assets/img/user/admins.png" alt="" /></a>
+                            <a href="javascript:;"><img src="<?= base_url() ?>temp/assets/img/user/admins.png"
+                                    alt="" /></a>
                         </div>
                         <div class="info">
                             <?= $this->fungsi->user_login()->username ?>
@@ -152,7 +163,7 @@
                         </a>
                         <ul class="sub-menu">
                             <li><a href="<?= base_url() ?>user_dinas">User Dinas</a></li>
-                            <li><a href="<?= base_url() ?>dinas">Dinas Terdaftar</a></li>
+                            <li><a href="<?= base_url() ?>list_dinas">Dinas Terdaftar</a></li>
                         </ul>
                     </li>
                     <li class="has-sub">
@@ -175,7 +186,8 @@
                     <li><a href="<?= base_url() ?>auth/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>
                             <span>Logout</span></a>
                     </li>
-                    <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
+                    <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i
+                                class="fa fa-angle-double-left"></i></a></li>
                 </ul>
             </div>
         </div>
@@ -190,7 +202,8 @@
         <?php echo $contents ?>
         <!-- end #content -->
 
-        <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+        <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade"
+            data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
 
 
     </div>
@@ -220,36 +233,37 @@
     <script src="<?= base_url() ?>temp/assets/js/apps.min.js"></script>
     <!-- ================== END PAGE LEVEL JS ================== -->
     <script>
-        $(document).ready(function() {
-            App.init();
-            TableManageDefault.init();
-            $('#deskripsi').summernote({
-                height: 200,
-                onImageUpload: function(files, editor, welEditable) {
-                    console.log('event')
-                    sendFile(files[0], editor, welEditable);
-                }
-            });
-
-            function sendFile(file, editor, welEditable) {
-                data = new FormData();
-                data.append("file", file);
-                $.ajax({
-                    data: data,
-                    type: "POST",
-                    url: "<?= site_url('informasi/ajax_image') ?>",
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    success: function(res) {
-                        console.log(res);
-                        if (res.success) {
-                            editor.insertImage(welEditable, res.url);
-                        }
-                    }
-                });
+    $(document).ready(function() {
+        App.init();
+        TableManageDefault.init();
+        $('#deskripsi').summernote({
+            height: 200,
+            onImageUpload: function(files, editor, welEditable) {
+                console.log('event')
+                sendFile(files[0], editor, welEditable);
             }
         });
+
+        function sendFile(file, editor, welEditable) {
+            data = new FormData();
+            data.append("file", file);
+            $.ajax({
+                data: data,
+                type: "POST",
+                url: "<?= site_url('informasi/ajax_image') ?>",
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(res) {
+                    console.log(res);
+
+                    if (res.success) {
+                        editor.insertImage(welEditable, res.url);
+                    }
+                }
+            });
+        }
+    });
     </script>
 </body>
 
