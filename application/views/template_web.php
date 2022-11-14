@@ -314,6 +314,7 @@
                         {
                             data: null,
                             render: function(data, type, row, meta) {
+                                console.log(row);
                                 return meta.row + 1;
                             }
                         },
@@ -326,7 +327,7 @@
 
                         },
                         {
-                            data: 'username',
+                            data: 'nama_dinas',
 
                         },
                         {
