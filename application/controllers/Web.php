@@ -234,6 +234,8 @@ class Web extends CI_Controller
 		}
 
 		$data = $this->Komoditas_model->get_all($where, $like);
+		var_dump($data);
+		die();
 		$this->excel->export($data);
 		
 	}
