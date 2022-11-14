@@ -310,8 +310,7 @@
                             d.minggu = $('#minggu').val();
                         }
                     },
-                    columns: [
-                        {
+                    columns: [{
                             data: null,
                             render: function(data, type, row, meta) {
                                 console.log(row);
@@ -369,7 +368,7 @@
                         {
                             data: 'jml_produksi_minggu',
                             render: function(data, type, row, meta) {
-                                return (data / 7) + ' Kg'
+                                return Math.round(data / 7) + ' Kg'
                             }
                         },
                         {
@@ -470,9 +469,9 @@
                         $(api.column(4).footer()).html(stok + ' Ton');
                         $(api.column(5).footer()).html(rencanaProduksi + ' Ton');
                         $(api.column(6).footer()).html(ketahananBulanan + ' Bulan');
-                        $(api.column(9).footer()).html(produksiMingguan + ' KG');
-                        $(api.column(10).footer()).html(produksiHarian + ' KG');
-                        $(api.column(11).footer()).html('Rp. ' + numeral(hTotalProduksi / api.data().count()).format('0,0').replace(/[,]/gm, '.') + ',00');
+                        $(api.column(9).footer()).html(Math.round(produksiMingguan) + ' KG');
+                        $(api.column(10).footer()).html(Math.round(produksiMingguan / 7) + ' KG');
+                        $(api.column(11).footer()).html('Rp. ' + numeral(hTotalProduksi).format('0,0').replace(/[,]/gm, '.') + ',00');
                         $(api.column(12).footer()).html('Rp. ' + numeral(hDariProdusen / api.data().count()).format('0,0').replace(/[,]/gm, '.') + ',00');
                         $(api.column(13).footer()).html('Rp. ' + numeral(hPedagang / api.data().count()).format('0,0').replace(/[,]/gm, '.') + ',00');
                     }
