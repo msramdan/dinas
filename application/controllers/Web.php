@@ -14,6 +14,7 @@ class Web extends CI_Controller
 		$this->load->model('Kontak_model');
 		$this->load->model('Banner_model');
 		$this->load->model('Komoditas_model');
+		 $this->load->model('Kelompok_model');
 	}
 
 	public function index()
@@ -54,7 +55,6 @@ class Web extends CI_Controller
 			$bulan_tahun = $this->input->get('bulan_tahun');
 			$minggu = $this->input->get('minggu');
 			$where = [];
-			$like = false;
 
 			if(!empty($komoditas)){
 				$where['produk.produk_id'] = $komoditas;
@@ -73,10 +73,10 @@ class Web extends CI_Controller
 			}
 
 			if(!empty($kelompok)){
-				$like = $kelompok;
+				$where['kelompok.kelompok_id'] = $kelompok;
 			}
 
-			pJson($this->Komoditas_model->get_all($where, $like));
+			pJson($this->Komoditas_model->get_all($where));
 		}
 
 		$kategori = $this->Kategori_model->get_all();
@@ -85,7 +85,7 @@ class Web extends CI_Controller
 
 		$fKomoditas = $this->db->get('produk')->result();
 		$fSumberData = $this->db->get('dinas')->result();
-		$fKelompok = $this->db->group_by('kelompok')->get('user_dinas')->result();
+		$fKelompok = $this->Kelompok_model->get_all();;
 
 
 

@@ -11,6 +11,7 @@ class Komoditas extends CI_Controller
         is_login();
         $this->load->model('Komoditas_model');
 		$this->load->model('Produk_model');
+		$this->load->model('Kelompok_model');
         $this->load->library('form_validation');
     }
 
@@ -50,9 +51,11 @@ class Komoditas extends CI_Controller
     public function create() 
     {
 		$produk = $this->Produk_model->get_all();
+		$kelompok = $this->Kelompok_model->get_all();
         $data = array(
             'button' => 'Create',
 			'produk_data' => $produk,
+			'kelompok' => $kelompok,
             'action' => site_url('komoditas/create_action'),
 			'komoditas_id' => set_value('komoditas_id'),
 			'tgl_update' => set_value('tgl_update'),
@@ -107,9 +110,11 @@ class Komoditas extends CI_Controller
 
         if ($row) {
 			$produk = $this->Produk_model->get_all();
+			$kelompok = $this->Kelompok_model->get_all();
             $data = array(
                 'button' => 'Update',
 				'produk_data' => $produk,
+				'kelompok' => $kelompok,
                 'action' => site_url('komoditas/update_action'),
 				'komoditas_id' => set_value('komoditas_id', $row->komoditas_id),
 				'tgl_update' => set_value('tgl_update', $row->tgl_update),

@@ -12,6 +12,7 @@ class Panel extends CI_Controller {
 		$this->load->model('Kategori_model');
 		$this->load->model('Komoditas_model');
 		$this->load->model('Produk_model');
+		$this->load->model('Kelompok_model');
     }
 
 	public function index()
@@ -199,13 +200,16 @@ class Panel extends CI_Controller {
     public function create_komoditas() 
     {
 		$produk = $this->Produk_model->get_all();
+		$kelompok = $this->Kelompok_model->get_all();
         $data = array(
             'button' => 'Create',
 			'produk_data' => $produk,
+			'kelompok' => $kelompok,
             'action' => site_url('panel/create_action_komoditas'),
 			'komoditas_id' => set_value('komoditas_id'),
 			'tgl_update' => set_value('tgl_update'),
 			'produk_id' => set_value('produk_id'),
+			'kelompok_id' => set_value('kelompok_id'),
 			'user_dinas_id' => set_value('user_dinas_id'),
 			'stok' => set_value('stok'),
 			'rencana_produksi' => set_value('rencana_produksi'),
@@ -232,6 +236,7 @@ class Panel extends CI_Controller {
             $data = array(
 			'tgl_update' => $this->input->post('tgl_update',TRUE),
 			'produk_id' => $this->input->post('produk_id',TRUE),
+			'kelompok_id' => $this->input->post('kelompok_id',TRUE),
 			'user_dinas_id' => $this->fungsi->user_dinas()->user_dinas_id,
 			'stok' => $this->input->post('stok',TRUE),
 			'rencana_produksi' => $this->input->post('rencana_produksi',TRUE),
@@ -254,13 +259,16 @@ class Panel extends CI_Controller {
 
         if ($row) {
 			$produk = $this->Produk_model->get_all();
+			$kelompok = $this->Kelompok_model->get_all();
             $data = array(
                 'button' => 'Update',
 				'produk_data' => $produk,
+				'kelompok' => $kelompok,
                 'action' => site_url('panel/update_action_komoditas'),
 				'komoditas_id' => set_value('komoditas_id', $row->komoditas_id),
 				'tgl_update' => set_value('tgl_update', $row->tgl_update),
 				'produk_id' => set_value('produk_id', $row->produk_id),
+				'kelompok_id' => set_value('kelompok_id', $row->kelompok_id),
 				'user_dinas_id' => set_value('user_dinas_id', $row->user_dinas_id),
 				'stok' => set_value('stok', $row->stok),
 				'rencana_produksi' => set_value('rencana_produksi', $row->rencana_produksi),
@@ -289,6 +297,7 @@ class Panel extends CI_Controller {
             $data = array(
 			'tgl_update' => $this->input->post('tgl_update',TRUE),
 			'produk_id' => $this->input->post('produk_id',TRUE),
+			'kelompok_id' => $this->input->post('kelompok_id'),
 			'stok' => $this->input->post('stok',TRUE),
 			'rencana_produksi' => $this->input->post('rencana_produksi',TRUE),
 			'ketahanan_bulanan' => $this->input->post('ketahanan_bulanan',TRUE),

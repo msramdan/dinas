@@ -47,7 +47,7 @@
                             <select class="" aria-label="Default select example" id="kelompok">
                                 <option value="">All</option>
                                 <?php foreach ($fKelompok as $k) : ?>
-                                <option value="<?= $k->kelompok ?>"><?= $k->kelompok ?></option>
+                                <option value="<?= $k->kelompok_id ?>"><?= $k->nama_kelompok ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>

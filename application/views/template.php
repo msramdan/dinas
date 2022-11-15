@@ -142,6 +142,7 @@
                         <ul class="sub-menu">
                             <li><a href="<?= base_url() ?>komoditas">Form Data Komoditas</a></li>
                             <li><a href="<?= base_url() ?>produk">Data Produk</a></li>
+                            <li><a href="<?= base_url() ?>kelompok">Data Kelompok</a></li>
                         </ul>
                     </li>
                     <li class="has-sub">

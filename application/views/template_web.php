@@ -354,7 +354,7 @@
 
                     },
                     {
-                        data: 'kelompok',
+                        data: 'nama_kelompok',
 
                     },
                     {

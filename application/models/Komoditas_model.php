@@ -16,17 +16,15 @@ class Komoditas_model extends CI_Model
     }
 
     // get all
-    function get_all($where = [], $like = false)
+    function get_all($where = [])
     {
 		$this->db->join('user_dinas', 'user_dinas.user_dinas_id = komoditas.user_dinas_id', 'left');
 		$this->db->join('dinas', 'dinas.dinas_id = user_dinas.dinas_id', 'left');
 		$this->db->join('produk', 'produk.produk_id = komoditas.produk_id', 'left');
+		$this->db->join('kelompok', 'kelompok.kelompok_id = komoditas.kelompok_id', 'left');
         $this->db->order_by($this->id, $this->order);
         if(!empty($where)){
             $this->db->where($where);
-        }
-        if($like){
-            $this->db->like('kelompok', $like);
         }
         return $this->db->get($this->table)->result();
     }

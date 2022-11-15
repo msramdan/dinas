@@ -31,7 +31,7 @@ class Excel {
             $sheet->setCellValue('B' . $key+2, $value->tgl_update);
             $sheet->setCellValue('C' . $key+2, $value->nama_produk);
             $sheet->setCellValue('D' . $key+2, $value->nama_dinas);
-			$sheet->setCellValue('E' . $key+2, $value->kelompok);
+			$sheet->setCellValue('E' . $key+2, $value->nama_kelompok);
             $sheet->setCellValue('F' . $key+2, $value->stok);
             $sheet->setCellValue('G' . $key+2, $value->rencana_produksi);
             $sheet->setCellValue('H' . $key+2, $value->ketahanan_bulanan);

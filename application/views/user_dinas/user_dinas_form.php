@@ -74,11 +74,6 @@
                                             placeholder="No Telpon" value="<?php echo $no_telpon; ?>" /></td>
                                 </tr>
                                 <tr>
-                                    <td>Kelompok <?php echo form_error('kelompok') ?></td>
-                                    <td><input type="text" class="form-control" name="kelompok" id="kelompok"
-                                            placeholder="Kelompok" value="<?php echo $kelompok; ?>" /></td>
-                                </tr>
-                                <tr>
                                     <td>Input Informasi <?php echo form_error('can_input_informasi') ?></td>
                                     <td><input type="checkbox" name="can_input_informasi" value="Ya"
                                             <?= $can_input_informasi == 'Ya' ? 'checked' : ''; ?>></td>

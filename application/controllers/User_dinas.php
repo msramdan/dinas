@@ -35,7 +35,6 @@ class User_dinas extends CI_Controller
 				'dinas_id' => $row->dinas_id,
 				'email' => $row->email,
 				'no_telpon' => $row->no_telpon,
-				'kelompok' => $row->kelompok,
 			);
 			$this->template->load('template', 'user_dinas/user_dinas_read', $data);
 		} else {
@@ -56,7 +55,6 @@ class User_dinas extends CI_Controller
 			'dinas_id' => set_value('dinas_id'),
 			'email' => set_value('email'),
 			'no_telpon' => set_value('no_telpon'),
-			'kelompok' => set_value('kelompok'),
 			'can_input_informasi' => set_value('can_input_informasi'),
 			'can_input_komoditas' => set_value('can_input_komoditas'),
 			'can_update_harga' => set_value('can_update_harga'),
@@ -97,7 +95,6 @@ class User_dinas extends CI_Controller
 				'dinas_id' => $this->input->post('dinas_id', TRUE),
 				'email' => $this->input->post('email', TRUE),
 				'no_telpon' => $this->input->post('no_telpon', TRUE),
-				'kelompok' => $this->input->post('kelompok', TRUE),
 				'can_input_informasi' => $can_input_informasi,
 				'can_input_komoditas' => $can_input_komoditas,
 				'can_update_harga' => $can_update_harga,
@@ -125,7 +122,6 @@ class User_dinas extends CI_Controller
 				'dinas_id' => set_value('dinas_id', $row->dinas_id),
 				'email' => set_value('email', $row->email),
 				'no_telpon' => set_value('no_telpon', $row->no_telpon),
-				'kelompok' => set_value('kelompok', $row->kelompok),
 				'can_input_informasi' => set_value('can_input_informasi', $row->can_input_informasi),
 				'can_input_komoditas' => set_value('can_input_komoditas', $row->can_input_komoditas),
 				'can_update_harga' => set_value('can_update_harga', $row->can_update_harga),
@@ -169,7 +165,6 @@ class User_dinas extends CI_Controller
 					'dinas_id' => $this->input->post('dinas_id', TRUE),
 					'email' => $this->input->post('email', TRUE),
 					'no_telpon' => $this->input->post('no_telpon', TRUE),
-					'kelompok' => $this->input->post('kelompok', TRUE),
 					'can_input_informasi' => $can_input_informasi,
 					'can_input_komoditas' => $can_input_komoditas,
 					'can_update_harga' => $can_update_harga,
@@ -181,7 +176,6 @@ class User_dinas extends CI_Controller
 					'dinas_id' => $this->input->post('dinas_id', TRUE),
 					'email' => $this->input->post('email', TRUE),
 					'no_telpon' => $this->input->post('no_telpon', TRUE),
-					'kelompok' => $this->input->post('kelompok', TRUE),
 					'can_input_informasi' => $can_input_informasi,
 					'can_input_komoditas' => $can_input_komoditas,
 					'can_update_harga' => $can_update_harga,

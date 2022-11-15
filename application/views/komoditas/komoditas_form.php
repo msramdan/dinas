@@ -47,6 +47,23 @@
                                         </select>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>Kelompok <?php echo form_error('kelompok_id') ?></td>
+                                    <td>
+                                        <select name="kelompok_id" class="form-control theSelect">
+                                            <option value="">-- Pilih -- </option>
+                                            <?php foreach ($kelompok as $key => $data) { ?>
+                                            <?php if ($kelompok_id == $data->kelompok_id) { ?>
+                                            <option value="<?php echo $data->kelompok_id ?>" selected>
+                                                <?php echo $data->nama_kelompok ?></option>
+                                            <?php } else { ?>
+                                            <option value="<?php echo $data->kelompok_id ?>">
+                                                <?php echo $data->nama_kelompok ?></option>
+                                            <?php } ?>
+                                            <?php } ?>
+                                        </select>
+                                    </td>
+                                </tr>
 
                                 <tr>
                                     <td>Stok (Ton) <?php echo form_error('stok') ?></td>

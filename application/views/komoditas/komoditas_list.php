@@ -39,6 +39,7 @@
                                                     <th>No</th>
                                                     <th>Tgl Update</th>
                                                     <th>Produk</th>
+                                                    <th>Kelompok</th>
                                                     <th>Created By</th>
                                                     <th>Stok</th>
                                                     <th>Rencana Produksi</th>
@@ -63,6 +64,7 @@
                                                     <td><?php echo date('d F Y', strtotime( $komoditas->tgl_update)) ?>
                                                     </td>
                                                     <td><?php echo $komoditas->nama_produk ?></td>
+                                                    <td><?php echo $komoditas->nama_kelompok ?></td>
                                                     <td><?php echo $komoditas->username ?></td>
                                                     <td><?php echo $komoditas->stok ?> Ton</td>
                                                     <td><?php echo $komoditas->rencana_produksi ?> Ton</td>
